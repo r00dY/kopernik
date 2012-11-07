@@ -547,6 +547,10 @@ a#playpause {
 	position: relative;
 }
 
+.lokalizacja div.mapka p {
+	margin-right: 15px;
+}
+
 .lokalizacja #mapCont {
 	width: 710px;
 	height: 475px;
