@@ -580,6 +580,7 @@ a#playpause {
 }
 
 .lokalizacja div.descr .sub {
+	width: 100%;
 	position: absolute;
 	bottom: 0;
 	border-bottom: 1px solid #5a5a5a;
