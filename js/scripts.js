@@ -16,7 +16,9 @@ $("document").ready(function() {
 	$('#pics, #newspics').cycle({
 		after: onAfter,
 		prev: ".lokalizacja .slidenav a.prevslide",
-		next: ".lokalizacja .slidenav a.nextslide"
+		next: ".lokalizacja .slidenav a.nextslide", 
+		timeout: 0,
+		fx: "cover"
 	});
 	
 	function onAfter() { 
