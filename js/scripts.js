@@ -1,6 +1,7 @@
 $("document").ready(function() {
 
 	// BLOGNAV HOVER ANIMATION
+	
 	$(".blognav a.blogprev").hover(function() {
 		$(this).stop().animate({"left" : "-5px"}, 100);
 	}, function() {
@@ -11,6 +12,22 @@ $("document").ready(function() {
 		$(this).stop().animate({"right" : "-5px"}, 100);
 	}, function() {
 		$(this).stop().animate({"right" : "0"}, 100)
+	});
+	
+	
+	// READ MORE HOVER ANIMATIOn
+	
+	$(".news-feature a.more").hover(function() {
+		console.log("hovered!");
+		$(this).animate({
+		  'background-position-x': '100%',
+		  'background-position-y': '50%'
+		}, 100)
+	}, function() {
+		$(this).animate({
+		  'background-position-x': '98%',
+		  'background-position-y': '50%'
+		}, 100)
 	});
 	
 
