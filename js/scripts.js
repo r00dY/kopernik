@@ -15,10 +15,9 @@ $("document").ready(function() {
 	});
 	
 	
-	// READ MORE HOVER ANIMATIOn
+	// READ MORE HOVER ANIMATION
 	
-	$(".news-feature a.more").hover(function() {
-		console.log("hovered!");
+	$(".news-feature a.more, .news-item .meta a.more").hover(function() {
 		$(this).animate({
 		  'background-position-x': '100%',
 		  'background-position-y': '50%'
@@ -33,12 +32,14 @@ $("document").ready(function() {
 
 	// NEWSROOM ITEM HEIGHT 
 	
-	$(".news-item .meta").hover(function() {
-		$(this).find("div").fadeIn(200);
-		$(this).stop().animate({"height" : "195px"}, 500);
+	$(".news-item").hover(function() {
+		var meta = $(this).find(".meta");
+		meta.find("div").fadeIn(200);
+		meta.stop().animate({"height" : "195px"}, 500);
 	}, function() {
-		$(this).stop().animate({"height" : "103px"}, 500);
-		$(this).find("div").fadeOut(200);
+		var meta = $(this).find(".meta");
+		meta.stop().animate({"height" : "103px"}, 500);
+		meta.find("div").fadeOut(200);
 	});
 
 
