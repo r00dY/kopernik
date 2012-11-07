@@ -661,7 +661,9 @@ a#playpause {
 	height: 98px;
 	background: url(../img/bg-slidenav.png) 0 0 no-repeat;
 	top: 50%;
+	left: 50%;
 	margin-top: -63px;
+	margin-left: -56px;
 }
 
 .lokalizacja .slidenav.hidden {
