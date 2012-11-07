@@ -1,0 +1,1526 @@
+@charset "UTF-8";
+@import "reset.css";
+
+
+/* FONTS
+------------------------------------------------------------- */
+
+* {
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility
+}
+
+@font-face {
+    font-family: 'ChartWell Bars';
+    src: url('../fonts/chartwellbars.woff') format('woff'),
+         url('../fonts/chartwellbars.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* PAGE STRUCTURE
+------------------------------------------------------------- */
+
+body {
+	background: #181818 url(../img/bg-body.png) 50% 0 repeat-y;
+	color: #9d9d9d;
+	font: normal 14px/20px Arial, sans-serif;
+	min-width:960px;
+	width:100%;
+}
+
+body.noframe {
+	background: #000 none;
+}
+
+.container {
+	width: 960px;
+	margin: 0 auto;
+	background-color: #000;
+}
+
+.container.full {
+	width: 100%;
+	min-width:960px;
+	margin:0;
+}
+
+.content {
+	margin-top: 190px;
+	position: relative;
+}
+
+.content.nosub {
+	margin-top: 100px;
+}
+
+.content .column {
+	width: 359px;
+	float: left;
+	padding: 0 60px;
+}
+
+.content .column:first-of-type {
+	border-right: 1px solid #212121;
+}
+
+.offset {
+	margin: 10px 0 30px -30px;
+}
+
+div.column img {
+	margin: 10px 0 7px -30px;
+}
+
+.column p {
+	margin-bottom: 35px;
+}
+
+
+/* ELEMENTS
+------------------------------------------------------------- */
+
+a, a:visited {
+	color: #e5946a;
+	text-decoration: underline;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a.szlaczek {
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	text-decoration: none;
+}
+
+a.szlaczek .underline {
+	position: absolute;
+	width: 100%;
+	border-top: 1px solid #e5946a;
+	left: -100%;
+	bottom: 2px;
+	}
+
+p {
+	margin-bottom: 20px;
+}
+
+p.lead {
+	font: italic 18px/20px Georgia, serif;
+	text-align: center;
+	color: #d4d4d4;
+	width: 530px;
+	margin: 0 auto 45px;
+	position: relative;
+	z-index: 2;
+}
+
+span.faded {
+	color: #888;
+}
+
+h2 {
+	font: normal 36px "futura-pt", sans-serif;
+	text-transform: uppercase;
+	color: #c9825d;
+	text-align: center;
+	margin: 0px 0 25px;
+	padding: 20px 0 0;
+	background: url(../img/bg-heading.png) 50% 0 no-repeat;
+}
+
+h3 {
+	font: normal 18px "futura-pt", sans-serif;
+	text-transform: uppercase;
+	color: #c9825d;
+	margin: 0 0 10px;
+}
+
+h4 {
+	font: bold 15px/20px Arial, sans-serif;
+	color: #fff;
+	margin: 12px 0;
+}
+
+ul.proper {
+	list-style: disc outside;
+	position: relative;
+	left: 20px;
+}
+
+
+/* HEADER
+------------------------------------------------------------- */
+
+header {
+	width: 960px;
+	margin: 0 auto 84px;
+}
+
+h1.logo {
+	width: 240px;
+	margin: 40px auto 0;
+}
+
+h1.logo a {
+	display: block;
+	width: 240px;
+	height: 30px;
+	text-indent: -9999px;
+	background: url(../img/logo-kopernikpark.png) 0 0 no-repeat;
+}
+
+nav {
+	margin: 40px 0 0;
+	padding-bottom:25px;
+	font: normal 16px "futura-pt", sans-serif;
+	text-transform: uppercase;
+	float: left;
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+
+nav ul.mainnav {
+	clear: left;
+	float: left;
+	position: relative;
+	left: 50%;
+	text-align: center;
+}
+
+nav ul.mainnav li {
+	float: left;
+	padding: 0 32px;
+	background: url(../img/bg-navitem.png) 100% 4px no-repeat;
+	overflow: hidden;
+	display: block;
+	position: relative;
+	right: 50%;
+}
+
+nav ul.mainnav li:first-child {
+	padding-left: 0;
+}
+
+nav ul.mainnav li:last-child {
+	padding-right: 0;
+	background: none;
+}
+
+nav ul.mainnav li a {
+	display: block;
+	color: #bababa !important;
+	text-decoration: none;
+	position: relative;
+}
+
+nav ul.mainnav li a.roll:after {
+	content: attr(title);
+	display: block;
+	position: absolute;
+	left: 0; top: -100%;
+	color: #e5946a;
+	width: 100%;
+	height: 100%;
+}
+
+nav ul.mainnav li a.current {
+	color: #e5946a !important;
+}
+
+nav ul.subnav {
+	clear: left;
+	width: 840px;
+	border-bottom: 1px solid #212121;
+	border-top: 1px solid #212121;
+	margin: 40px 0 0;
+	padding: 0 60px;
+}
+
+nav ul.subnav li {
+	float: left;
+	background: none;
+	padding: 15px 0;
+	margin: 0 30px 0 0;
+	text-transform: none;
+}
+
+nav ul.subnav li a {
+	text-decoration: none;
+	color: #707070;
+}
+
+nav ul.subnav li a.current,
+nav ul.subnav li a:hover {
+	color: #fff;
+}
+
+a.prevpage {
+	display: block;
+	font: italic 15px/28px "Georgia" serif;
+	color: #d4d4d4;
+	background: url(../img/bg-prevpage.png) 3% 0 no-repeat;
+	padding: 0 0 0 28px;
+	position: absolute;
+	left: 40px;
+	top: 28px;
+	text-decoration: none;
+}
+
+a.nextpage {
+	font: italic 15px/28px "Georgia" serif;
+	color: #d4d4d4;
+	background: url(../img/bg-nextpage.png) 97% 0 no-repeat;
+	padding: 0 32px 0 0;
+	position: absolute;
+	right: 40px;
+	top: 28px;
+	text-decoration: none;
+}
+
+
+/* PAGES CONTENT
+------------------------------------------------------------- */
+
+#mapCont {
+	position: relative;
+}
+
+#zoomcontrol {
+	position: absolute;
+	top: 0; left: 0;
+	z-index: 100;
+}
+
+#zoomcontrol div {
+	width: 33px;
+	height: 33px;
+	text-indent: -999em;
+	background: url(../img/zoomcontrols.png) no-repeat;
+	cursor: pointer;
+	margin: 0 0 1px;
+}
+
+#zoomcontrol div:first-child {
+	background-position: 0 0;
+}
+
+#zoomcontrol div:last-child {
+	background-position: 100% 100%;
+}
+
+
+/* GLOWNA */
+
+#carousel {
+
+	left: 0;
+	width: 100%;
+	height: 600px;
+	overflow: hidden;
+	padding-top:33px;
+	position:relative;
+}
+
+a.pokaz {
+	padding:0 25px 0 0;
+	background: url(../img/arrow-triangle.png) center right no-repeat;
+}
+
+
+a#playpause {
+	display: block;
+	position: absolute;
+	padding: 0 25px 0 0;
+	height:22px;
+	line-height:24px;
+	font: normal 16px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#carousel a#playpause{
+	bottom: 30px; 
+	right: 50px;
+}
+
+#clockTimer{
+	position:absolute;
+	bottom:0;
+	right:-10px;
+}
+#carousel .overview {
+	height: 507px;
+	width:5296px;
+	list-style: none; 
+	position: relative; 
+}
+
+#carousel .overview li{
+	float:left;
+	}
+
+.caroufredsel_wrapper {
+	height: 507px !important;
+}
+
+#carousel .item {
+	height: 507px;
+	width:716px;
+}
+
+#carousel .description {
+	width: 608px;
+	height: 507px;
+	background: url(../img/bg-carousel.png) 0 0 no-repeat;
+}
+
+#carousel .description h2.miejsce {
+	width: 203px;
+	height: 64px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-miejsce.png) left bottom no-repeat;  
+}
+
+#carousel .description h2.styl {
+	width: 118px;
+	height: 73px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-styl.png) left bottom no-repeat;  
+}
+
+#carousel .description h2.czas {
+	width: 117px;
+	height: 46px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-czas.png) left bottom no-repeat;  
+}
+
+#carousel .description h2.pasja {
+	width: 139px;
+	height: 64px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-pasja.png) left bottom no-repeat;  
+}
+
+
+#carousel .description p.lead {
+	font-size: 15px;
+	line-height: 24px;
+	width: 440px;
+}
+
+#carousel .description a.film {
+	display: block;
+	margin: 0 auto;
+	width: 100px;
+	font: normal 20px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	text-decoration: none;
+	background: url(../img/arrow-link.png) 95% 50% no-repeat;
+}
+
+/* do usuniecia */
+
+#carousel .description2 {
+	width: 608px;
+	height: 507px;
+
+}
+
+#carousel .description2 h2.miejsce {
+	width: 203px;
+	height: 64px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-miejsce.png) left bottom no-repeat;  
+}
+
+#carousel .description2 h2.styl {
+	width: 118px;
+	height: 73px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-styl.png) left bottom no-repeat;  
+}
+
+#carousel .description2 h2.czas {
+	width: 117px;
+	height: 46px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-czas.png) left bottom no-repeat;  
+}
+
+#carousel .description2 h2.pasja {
+	width: 139px;
+	height: 64px;
+	margin: 0px auto 30px;
+	padding-top:110px;
+	text-indent: -9999em;
+	background: url(../img/h2-pasja.png) left bottom no-repeat;  
+}
+
+
+#carousel .description2 p.lead {
+	font-size: 15px;
+	line-height: 24px;
+	width: 440px;
+}
+
+#carousel .description2 a.film {
+	display: block;
+	margin: 0 auto;
+	width: 100px;
+	font: normal 20px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	text-decoration: none;
+	background: url(../img/arrow-link.png) 95% 50% no-repeat;
+}
+/* /// do usuniecia */
+
+/* CLUB */
+
+.club {
+	background: url(../img/bg-club.jpg) 50% -40px no-repeat;
+	position: relative;
+	min-height: 620px;
+	margin-bottom: 100px;
+}
+
+.club .descr {
+	width: 310px;
+	position: absolute;
+}
+
+.club .descr:first-of-type {
+	top: -5px;
+	left: 60px;
+}
+
+.club .descr:last-of-type {
+	top: 460px;
+	left: 610px;
+}
+
+
+/* THE ONE */
+
+.theone {
+	background: url(../img/bg-theone.jpg) 50% -40px no-repeat;
+	position: relative;
+	min-height: 755px;
+}
+
+.theone .descr {
+	width: 360px;
+	position: absolute;
+	top: 390px; left: 60px;
+}
+
+
+
+/* LOKALIZACJA */
+
+.lokalizacja {
+	margin-top: 35px;
+}
+
+.lokalizacja div.mapka {
+	float: left;
+	width: 715px;
+	position: relative;
+}
+
+.lokalizacja #mapCont {
+	width: 710px;
+	height: 475px;
+	border: 1px solid #3c3c3c;
+	margin: 0 0 40px;
+	opacity: 0;
+}
+
+.lokalizacja #mapCont #mapa {
+	width: 710px;
+	height: 475px;
+}
+
+.lokalizacja div.descr {
+	float: right;
+	width: 165px;
+	font-size: 12px;
+	line-height: 16px;
+	margin: 0 40px 0 0;
+	height: 515px;
+	position: relative;
+}
+
+.newsroom div.descr {
+	margin: 0 25px 0 0 !important;
+	width: 140px !important;
+}
+
+.lokalizacja div.descr .sub {
+	position: absolute;
+	bottom: 0;
+	border-bottom: 1px solid #5a5a5a;
+}
+
+.lokalizacja div.descr .sub.pics {
+	display: none;
+}
+
+.newsroom div.descr .sub.pics {
+	display: block !important;
+}
+
+.news-content {
+	padding: 0 15px;
+	width: 700px;
+	margin: 0 0 70px 0;
+}
+
+.lokalizacja div.descr p {
+	margin-bottom: 30px;
+}
+
+.lokalizacja div.descr strong {
+	font-size: 14px;
+	color: #fff;
+	display: block;
+}
+
+.lokalizacja div.descr .tool {
+	display: block;
+	font: normal 24px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	color: #868686;
+	text-decoration: none;
+	text-transform: uppercase;
+	margin: 0 0 15px;
+}
+
+.lokalizacja div.descr .tool.current,
+.lokalizacja div.descr .tool:hover {
+	color: #c9825d;
+}
+
+.lokalizacja #pics {
+	display: none;
+	height: 478px;
+	width: 714px;
+	margin: 0 0 40px;
+}
+
+#newspics {
+	height: 478px;
+	width: 714px;
+	margin: 0 0 40px;
+}
+
+.lokalizacja #pics .pic,
+#newspics .pic {
+	position: absolute;
+	height: 478px;
+}
+
+.lokalizacja #pics .pic span,
+#newspics .pic span {
+	display: inline-block;
+	position: absolute;
+	bottom: 0; left: 0;
+	padding: 0 11px;
+	line-height: 27px;
+	font-size: 11px;
+	color: #fff;
+	background-color: #1e1e1e;
+}
+
+.lokalizacja .slidenav {
+	position: absolute;
+	width: 108px;
+	height: 98px;
+	background: url(../img/bg-slidenav.png) 0 0 no-repeat;
+	top: 50%;
+	margin-top: -63px;
+}
+
+.lokalizacja .slidenav.hidden {
+	display: none;
+}
+
+.lokalizacja .slidenav a {
+	display: block;
+	text-indent: -99999em;
+	width: 52px;
+	height: 38px;
+	position: absolute;
+}
+
+.lokalizacja .slidenav a.prevslide {
+	background: url(../img/arrow-back.png) 0 0 no-repeat;
+	top: 4px; left: 4px;
+}
+
+.lokalizacja .slidenav a.nextslide {
+	background: url(../img/arrow-next.png) 0 0 no-repeat;
+	bottom: 4px; right: 4px;
+}
+
+
+/* NEWSROOM */
+
+.blognav {
+	position: absolute;
+	height: 28px;
+	top: -80px; right: 15px;
+}
+
+.blognav a {
+	display: block;
+	float: left;
+	height: 28px;
+	text-indent: -9999em;
+	background: url(../img/icons-blognav.png) 0 0 no-repeat;
+}
+
+.blognav a.blogprev {
+	width: 26px;
+	background-position: 0 0;
+}
+
+.blognav a.bloggrid {
+	width: 35px;
+	background-position: -26px 0;
+}
+
+.blognav a.blognext {
+	width: 22px;
+	background-position: -62px 0;
+	margin: 0 0 0 4px;
+}
+
+.news-feature {
+	background-color: #1c1c1c;
+	padding: 13px;
+	margin: 0 0 15px;
+}
+
+.news-feature img {
+	float: left;
+}
+
+.news-feature .meta {
+	width: 260px;
+	height: 100%;
+	float: right;
+	margin: 0 25px 0 0;
+	position: relative;
+}
+
+.news-feature h3 {
+	color: #c9825d;
+	font: normal 30px/34px "futura-pt", sans-serif;
+	text-transform: uppercase;
+	background: url(../img/bg-newstitle.png) 0 0 no-repeat;
+	margin: 20px 0 15px;
+	padding: 22px 0 0;
+}
+
+.news-feature a.more {
+	display: block;
+	font-family: Georgia, serif;
+	font-size: 12px;
+	color: #fff;
+	font-style: italic;
+	padding: 0 30px 0 0;
+	background: url(../img/bg-more.png) 100% 50% no-repeat;
+	text-decoration: none;
+	margin: 15px 0 0;
+	text-align: right;
+}
+
+.news-item {
+	width: 310px;
+	height: 403px;
+	position: relative;
+	float: left;
+	margin: 0 15px 15px 0;
+}
+
+.news-item:nth-child(3n+3) {
+	margin-right: 0;
+}
+
+.news-item img {
+	position: relative;
+}
+
+.news-item .meta {
+	height: 103px;
+	width: 274px;
+	background-color: #1c1c1c;
+	overflow: hidden;
+	padding: 0 18px;
+	font-size: 12px;
+	line-height: 16px;
+	color: #9d9d9d;
+	position: absolute;
+	bottom: 0; left: 0;
+}
+
+.news-item .meta div {
+	display: none;
+}
+
+.news-item .meta h4 {
+	color: #c9825d;
+	font: normal 20px/24px "futura-pt", sans-serif;
+	text-transform: uppercase;
+	background: url(../img/bg-newstitle.png) 0 0 no-repeat;
+	margin: 20px 0 15px;
+	padding: 16px 0 0;
+}
+
+.news-item .meta h4 a {
+	text-decoration: none;
+}
+
+.news-item .meta a.more {
+	display: inline-block;
+	font-family: Georgia, serif;
+	font-size: 12px;
+	color: #fff;
+	font-style: italic;
+	padding: 0 30px 0 0;
+	background: url(../img/bg-more.png) 100% 50% no-repeat;
+	text-decoration: none;
+	float: right;
+	margin: -8px 5px 0 0;
+}
+
+
+
+
+/* MIESZKANIA I APARTAMENTY */
+
+.mieszkania {
+	position: relative;
+	min-height: 650px;
+}
+
+.mieszkania .descr {
+	float: left;
+	width: 270px;
+	margin: 0 0 0 60px;
+	position: relative;
+	z-index: 10;
+}
+
+.mieszkania dl {
+	width: 102px;
+	float: left;
+	margin: 0 23px 60px 0;
+}
+
+.mieszkania dl dt {
+	font: normal 26px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	color: #c9825d;
+	padding: 10px 0 0;
+}
+
+.mieszkania dl dd {
+	color: #fff;
+	border-bottom: 1px solid #454545;
+	padding-bottom: 10px;
+}
+
+.mieszkania .segments {
+	clear: both;
+}
+
+.mieszkania .segments a.seg {
+	display: block;
+	width: 72px;
+	height: 71px;
+	border: 1px solid #adadad;
+	float: left;
+	margin: 0 22px 0 0;
+	padding: 15px;
+	font: normal 20px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	line-height: 28px;
+	color: #adadad;
+	text-decoration: none;
+}
+
+.mieszkania .segments a.seg:hover,
+.mieszkania .segments a.seg.current {
+	color: #c9825d;
+}
+
+.mieszkania #segprev {
+	width: 868px;
+	height: 829px;
+	position: absolute;
+	right: -62px;
+	top: -130px;
+	z-index: 1;
+}
+
+.mieszkania #segprev img {
+	position: absolute;
+	right: 0; top: 0;
+	z-index: 5;
+}
+
+
+/* KONTAKT */
+
+.biuro {
+	margin: 50px 0 0;
+	color: #fff;
+}
+
+.biuro .adres {
+	width: 290px;
+	margin: 0 0 0 20px;
+	float: left;
+}
+
+.biuro .adres dl {
+	overflow: hidden;
+}
+
+.biuro .adres dt {
+	width: 50px;
+	text-align: right;
+	float: left;
+}
+
+.biuro .adres dd {
+	width: 220px;
+	float: right;
+}
+
+.biuro .adres dl:last-of-type {
+	margin-bottom: 40px;
+}
+
+.biuro .people {
+	width: 240px;
+	float: left;
+}
+
+
+.biuro .dlamediow {
+	padding: 25px 0 0;
+	border-top: 1px solid #5a5a5a;
+	margin: 25px 0 0;
+}
+
+.biuro .adres .opb-logo {
+	display: block;
+	width: 237px;
+	height: 112px;
+	background: url(../img/logo-opbgw.jpg) no-repeat;
+	
+	text-indent: -9999px;
+	margin: -20px 0 0;
+}
+
+.biuro #mapCont {
+	width: 294px;
+	height: 272px;
+	float: right;
+	margin: 0 20px 0 0;
+	border: 1px solid #3c3c3c;
+	opacity: 0;
+}
+
+.biuro #mapCont #map {
+	width: 294px;
+	height: 272px;
+}
+
+form.contact {
+  margin-top: 60px;
+  position: relative;
+}
+form.contact fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+form.contact .cols {
+  margin-top: 20px;
+}
+form.contact .cols:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+form.contact .cols .col {
+  float: left;
+  width: 47%;
+}
+form.contact .cols .col + .col {
+  width: 51%;
+}
+form.contact .cols .col .row {
+  position: relative;
+}
+
+form.contact label {
+  color: white;
+  width: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  text-align: right;
+  padding-right: 5px;
+  line-height: 37px;
+}
+
+form.contact .select {
+	width: 244px;
+	padding: 0 10px;
+	height: 35px;
+	line-height: 35px;
+	border: 1px solid #4e4e4e;
+	background: url(../img/dropkick-arrow.png) 100% 0 no-repeat;
+	position: relative;
+	cursor: pointer;
+}
+
+form.contact .select .dropdown {
+	display: none;
+	position: absolute;
+	top: 35px; left: -1px;
+	width: 266px;
+	background-color: #4f4f4f;
+	z-index: 5;
+}
+
+form.contact .select .dropdown label {
+	width: 246px;
+	display: block;
+	color: #c0c0c0;
+	position: relative;
+	text-align: left;
+	padding: none;
+	line-height: 35px;
+	cursor: pointer;
+	padding: 0 10px;
+}
+
+form.contact .select .dropdown label:hover {
+	background-color: #222222;
+}
+
+form.contact .cols .col .row input[type=text] {
+  margin-left: 130px;
+  display: block;
+  line-height: 17px;
+  height: 37px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 270px;
+}
+form.contact .cols .col .row + .row {
+  margin-top: 16px;
+}
+form.contact h3 {
+  text-transform: uppercase;
+  color: #e5946a;
+  font-size: 2em;
+  margin-bottom: 40px;
+}
+form.contact textarea {
+  display: block;
+  width: 100%;
+  height: 90px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+form.contact input[type=text], form.contact textarea {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+  padding: 10px;
+  -webkit-appearance: none;
+  background-color: #000;
+  border: 1px solid #626262;
+  font: normal 13px Arial, sans-serif;
+  color: #c0c0c0;
+}
+
+form.contact .submits {
+  text-align: right;
+  margin: 20px 18px 0 0;
+}
+form.contact .submit {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  overflow: hidden;
+
+}
+form.contact .underline {
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #8d573a;
+  left: -100%;
+  bottom: 0;
+}
+form.contact input[type="submit"] {
+  color: #c1882d;
+  font-size: 1.5em;
+  border: none;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/submit.png');
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-color: transparent;
+  width: 179px;
+  height: 30px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+   cursor: pointer;
+   
+}
+form.contact .info {
+  position: absolute;
+  bottom: 20px;
+  left: 130px;
+  font-size: 0.9em;
+  color: silver;
+}
+form.contact .invalid input[type=text] {
+  border: 2px solid #b83535;
+}
+
+form.contact .loaderIcon {
+	position: absolute;
+	bottom: 2px; right: 195px;
+}
+
+#response {
+	display: none;
+	height: 60px;
+}
+
+/*
+ * Default DropKick theme
+ *
+ * Feel free to edit the default theme
+ * or even add your own.
+ *
+ * See the readme for themeing help
+ */
+/**** Begin Theme, feel free to edit in here! ***** */
+/* One container to bind them... */
+.dk_container {
+  color: #fff;
+}
+.dk_container:focus {
+  outline: 0;
+}
+.dk_container a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* Opens the dropdown and holds the menu label */
+.dk_toggle {
+  /*
+   * Help: Arrow image not appearing
+   * Try updating this property to your correct dk_arrows.png path */
+  width: 265px;
+  height: 37px;
+  background-color: #000; 
+  color: #c0c0c0;
+  line-height: 17px;
+  padding: 10px 15px 10px 10px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid #626262;
+}
+
+.dk_toggle:after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 37px;
+  height: 37px;
+  background: #262626 url('../img/dropkick-arrow.png') no-repeat center;
+}
+
+/* Applied whenever the dropdown is open */
+.dk_open {
+  /*
+   * Help: Dropdown menu is covered by something
+   * Try setting this value higher */
+  z-index: 10;
+}
+
+/* The outer container of the options */
+.dk_options li a {
+  padding: 8px 10px;
+  color: inherit;
+}
+.dk_options li a:hover {
+  color: white;
+  background-color: #222;
+}
+.dk_options li.dk_option_current a {
+  color: white;
+  background-color: #222;
+}
+
+/* Inner container for options, this is what makes the scrollbar possible. */
+.dk_options_inner {
+  margin: 0px 0 0 0;
+  background-color: #424242;
+  max-height: 250px;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Set a max-height on the options inner */
+.dk_touch .dk_options {
+  max-height: 250px;
+}
+
+/*****  End Theme ***** */
+/**** Critical to the continued enjoyment of working dropdowns ***** */
+.dk_container {
+  display: none;
+  position: relative;
+}
+.dk_container a {
+  outline: 0;
+}
+
+.dk_toggle {
+  display: -moz-inline-stack;
+  display: inline-block;
+  *display: inline;
+  position: relative;
+  zoom: 1;
+}
+
+.dk_open {
+  position: relative;
+}
+.dk_open .dk_options {
+  display: block;
+}
+.dk_open .dk_label {
+  color: inherit;
+}
+
+.dk_options {
+  display: none;
+  position: absolute;
+  right: 0;
+  left: 0;
+  width: 265px;
+}
+.dk_options a {
+  display: block;
+}
+.dk_options a:link, .dk_options a:visited {
+  display: block;
+}
+
+.dk_options_inner {
+  overflow: auto;
+  position: relative;
+}
+
+.dk_touch .dk_options {
+  overflow: hidden;
+}
+.dk_touch .dk_options_inner {
+  max-height: none;
+  overflow: visible;
+}
+
+/*
+ * Help: I'm seeing a flash of unstyled content
+ * Try applying this class to your <select> elements */
+.dk_fouc select.dropkick {
+  position: relative;
+  top: -99999em;
+  visibility: hidden;
+}
+
+.dk_ie6 .dk_options {
+  right: 0;
+}
+
+
+/* WIZUALIZACJE */
+
+body.wizualizacje{
+	width:100%;
+	height:100%;
+}
+.slideshow {
+	margin-left:2%;
+	position:relative;
+	overflow:hidden;
+	height:600px;
+	width:97%;
+}
+
+.slideshow .slides {
+
+	width: 87%;
+	height:100%;
+	overflow: hidden;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.slideshow .slides .slide{
+	overflow:hidden;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.slideshow .slides .slide img {
+	height: auto;
+	position:absolute;
+	left:0;
+	
+}
+
+.slideshow a#playpause{
+	top:20px;
+	left:90%;
+}
+
+.slideshow .tools {
+width: 110px;
+height:98px;
+position: absolute;
+left:88%;;
+margin-top:-49px;
+top: 50%;
+}
+
+.slideshow .slidenav {
+	position: absolute;;
+	width: 108px;
+	height: 98px;
+	background: url(../img/bg-slidenav.png) 0 0 no-repeat;
+}
+
+.slideshow .slidenav a {
+	display: block;
+	text-indent: -99999em;
+	width: 52px;
+	height: 38px;
+	position: absolute;
+}
+
+.slideshow .slidenav a.prevslide {
+	background: url(../img/arrow-back.png) 0 0 no-repeat;
+	top: 4px; left: 4px;
+}
+
+.slideshow .slidenav a.nextslide {
+	background: url(../img/arrow-next.png) 0 0 no-repeat;
+	bottom: 4px; right: 4px;
+}
+
+.slideshow p.title {
+  border-top: 1px solid #2D2D2D;
+  bottom: 0;
+  color: #FFFFFF;
+  font-size: 0.9em;
+  left: 88%;
+  line-height: 16px;
+  padding: 10px 0 0;
+  position: absolute;
+  width: 110px;
+}
+
+.slides #cover{
+	z-index:900;
+	background: #000;
+	width:100%;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.slideshow .tools a.pause {
+	font: normal 16px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	color: #fff;
+	text-decoration: none;
+	position: relative;
+	text-transform: uppercase;
+}
+
+.slideshow .tools a.pokaz {
+	position: relative;
+	font: normal 16px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 0 25px 0 0;
+	background: url(../img/arrow-triangle.png) 100% 70% no-repeat;
+}
+
+
+
+/* FOOTER
+------------------------------------------------------------- */
+
+footer {
+	width: 960px;
+	font-size: 12px;
+	margin: 90px auto 20px;
+	height: 50px;
+	position: relative;
+}
+
+footer.bottom {
+	margin-top: 0px;
+}
+
+footer p.copy {
+	width: 30%;
+	float: left;
+}
+
+footer p.credits {
+	width: 30%;
+	float: right;
+	text-align: right;
+}
+
+footer p.credits a {
+	color: #9d9d9d;
+	text-decoration: none;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+}
+
+footer p.credits .underline {
+  position: absolute;
+  width: 100%;
+  border-top: 1px solid #9d9d9d;
+  left: -100%;
+  bottom: 2px;
+}
+
+#opb,
+#opb2 {
+    width: 164px;
+    height: 74px;
+    background: url(../img/opb.png) 0 0 no-repeat;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    margin-left: -82px;
+    text-indent: -999em;
+    z-index: 5;
+}
+
+.cssTransitions #opb {
+    -webkit-transition: height .3s ease;
+    -moz-transition: height .3s ease;
+    -ms-transition: height .3s ease;
+    -o-transition: height .3s ease;
+    transition: height .3s ease;
+}
+
+.cssTransitions #opb:hover {
+    height: 95px !important;
+}
+
+#opb2 {
+    height: 11px;
+    background-position: 0 -94px;
+    bottom: 45px;
+    z-index: 4;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cssTransitions #opb2 {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+.cssTransitions #opb:hover + #opb2 {
+    bottom: 25px !important;
+    opacity: 1 !important;
+}
+
+
+/* MISC.
+------------------------------------------------------------- */
+
+.hide {
+	display: none;
+}
+
+.clear {
+	clear: both;
+}
+
+/* self-clear floats */
+
+.menu-slider ul li a:after,
+.group:after {
+	content: ""; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+	overflow: hidden;
+}

@@ -1,0 +1,312 @@
+.container.medium {
+	width: 1140px;
+}
+
+.fancybox-inner,
+.fancybox-skin {
+	margin: 0;
+	padding: 0;
+	background-color: #000 !important;
+}
+
+.content.radial {
+	width: 1100px;
+	position: relative;
+	left: -78px;
+	background: url(../img/gradient-radial.jpg) 0 0 no-repeat;
+	min-height: 790px;
+}
+
+.push {
+	margin-bottom: 70px !important;
+}
+
+p.lead.down {
+	font-size: 15px;
+	margin-top: -15px;
+}
+
+p.lead a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.bryla {
+	position: relative;
+}
+
+.bryla .budynki {
+	position: absolute;
+	left: 85px; top: 100px;
+	font: normal 24px "futura-pt", Arial sans-serif;
+	text-transform: uppercase;
+}
+
+.bryla .budynki.lower {
+	width: 110px;
+	left: 10px; top: 20px;
+	text-transform: none;
+	font: normal 24px "ChartWell Bars", "futura-pt", Arial sans-serif;
+}
+
+.bryla .budynki li {
+	margin-bottom: 5px;
+}
+
+.bryla .budynki a {
+	color: #424242;
+	text-decoration: none;
+}
+
+.bryla .budynki.lower li {
+	margin-bottom: 12px;
+}
+
+.bryla .budynki.lower a {
+	color: #d4d4d4;
+}
+
+
+.bryla .budynki a.hover,
+.bryla .budynki a.current {
+	font-size: 36px;
+	color: #c9825d;
+}
+
+.bryla .budynek,
+.kondygnacje {
+	width: 560px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.kondygnacje {
+	min-height: 600px;
+}
+
+.kondygnacje .budynek {
+	position: absolute;
+	top: 0; left: 0;
+}
+
+.budynek a.lokal {
+	display: block;
+	position: absolute;
+	text-indent: -999em;
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+
+.budynek a.lokal.m-103 {
+	width: 114px;
+	height: 117px;
+	background-image: url(../img/overlay-saturn-106.png);
+	right: 177px; top: 46px;
+}
+
+.budynek a.lokal.m-104 {
+	width: 148px;
+	height: 269px;
+	background-image: url(../img/overlay-saturn-104.png);
+	right: 34px; top: 3px;
+}
+
+.budynek a.lokal.m-105 {
+	width: 116px;
+	height: 227px;
+	background-image: url(../img/overlay-saturn-105.png);
+	right: 66px; bottom: 6px;
+}
+
+.budynek a.lokal.m-106 {
+	width: 114px;
+	height: 117px;
+	background-image: url(../img/overlay-saturn-106.png);
+	right: 177px; bottom: 6px;
+}
+
+.bud-info {
+	position: absolute;
+	right: 0; top: 0;
+	font-size: 13px;
+	color: #fff;
+	width: 102px;
+}
+
+#budinfo {
+	display: none;
+}
+
+.bud-info b {
+	display: block;
+	color: #c9825d;
+	padding: 10px 0 0;
+	font: normal 30px/24px "ChartWell Bars", "futura-pt", Arial sans-serif;
+}
+
+.bud-info span {
+	display: block;
+	padding: 0 0 8px 0;
+	border-bottom: 1px solid #454545;
+}
+.bud-info i{
+	font-style:normal;
+}
+
+.bud-bryla {
+	width: 653px;
+	margin: 0 auto;
+}
+
+.bryla ul.pietra {
+	width: 110px;
+	position: absolute;
+	right: 130px; top: 60px;
+	text-transform: none;
+	color: #c9825d;
+	font: normal 30px "ChartWell Bars", "futura-pt", Arial sans-serif;
+}
+
+.bryla ul.pietra li {
+	margin-bottom: 13px;
+	opacity: 0;
+}
+
+.karta {
+	position: relative;
+	overflow:hidden;
+	width:100%;
+	min-height:600px;
+}
+
+#plan-dialog a.close {
+	display: block;
+	width: 158px;
+	height: 48px;
+	text-indent: -9990em;
+	background: url(../img/close.jpg) 0 0 no-repeat;
+	position: absolute;
+	right: 30px; 
+	top: 0px;
+}
+
+.karta .rzut {
+  float: left;
+  width: 560px;
+}
+
+.karta .rzut img {
+	max-width: 100%;
+}
+
+.karta .panel {
+  border-left: 1px solid #414141;
+  position:absolute;
+  right: 30px;
+  padding: 15px 0 15px 25px;
+  width: 375px;
+}
+
+.panel #showhide {
+  background: url("../img/panel-showhide.png") no-repeat;
+  display: block;
+  height: 109px;
+  margin: -55px -47px 0;
+  position: absolute;
+  text-indent: -9999em;
+  top: 50%;
+  width: 19px;
+}
+
+.panel #showhide.hidden{
+	background-position:-19px 0;
+}
+
+.panel #showhide.shown{
+	background-position:0 0;
+}
+
+
+
+
+.panel h3 {
+	font: normal 30px/36px "futura-pt", Arial sans-serif;
+	color: #fff;
+	text-transform: uppercase;
+	margin: 0 0 25px;
+}
+
+.panel .bud-info,
+.fancybox-inner .bud-info {
+	display: block;
+	position: relative;
+	float: left;
+	margin: 0 30px 45px 0;
+}
+
+.panel .widok {
+	font: italic 15px/20px Georgia, serif;
+	color: #fff;
+	position: relative;
+	
+}
+
+.panel div.widok-container{
+	position: relative;
+	left:110px;
+	width:238px;
+	height:228px;
+}
+
+.panel .tool {
+	clear: both;
+	width: 208px;
+	height: 35px;
+	position: relative;
+	background-color: #212121;
+	margin: 0 0 4px;
+}
+
+.panel .tool .tool-hover {	
+	width: 0px;
+	height: 35px;
+	background-color: #cb835e;
+}
+
+.panel .tool a {
+	display: block;
+	text-align: center;
+	width: 208px;
+	font: normal 14px/35px "futura-pt", Arial sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	position: relative;
+	top: -35px;
+}
+
+#plan-dialog{
+	display:none;
+	position:absolute;
+	z-index:9999;
+	width:100%;
+	min-height:100%;
+	background:#000;
+	top:0;
+	left:0;
+}
+
+#plan-dialog .container{
+	width:1000px;
+	padding-bottom:50px;
+	position:relative;
+}
+
+.nr-lokalu{
+	position:absolute;
+	font-family: 'ChartWell Bars';
+	color:#fff;
+	font-size:27px;
+	display:none;
+}
