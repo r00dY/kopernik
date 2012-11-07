@@ -1,5 +1,19 @@
 $("document").ready(function() {
 
+	// BLOGNAV HOVER ANIMATION
+	$(".blognav a.blogprev").hover(function() {
+		$(this).stop().animate({"left" : "-5px"}, 100);
+	}, function() {
+		$(this).stop().animate({"left" : "0"}, 100)
+	});
+	
+	$(".blognav a.blognext").hover(function() {
+		$(this).stop().animate({"right" : "-5px"}, 100);
+	}, function() {
+		$(this).stop().animate({"right" : "0"}, 100)
+	});
+	
+
 	// NEWSROOM ITEM HEIGHT 
 	
 	$(".news-item .meta").hover(function() {

@@ -696,6 +696,7 @@ a#playpause {
 	height: 28px;
 	text-indent: -9999em;
 	background: url(../img/icons-blognav.png) 0 0 no-repeat;
+	position: relative;
 }
 
 .blognav a.blogprev {
