@@ -281,15 +281,18 @@ $("document").ready(function() {
 	$("#contactform").validate({
 	  onfocusout: false,
 	  onclick: false,
+	  onkeyup: false,
 	  rules: {
 	    name: {
 	      required: true
 	    },
 	    phone: {
-	      required: true
+	      required: true,
+	      number: true
 	    },
 	    email: {
-	      required: true
+	      required: true,
+	      email: true
 	    }
 	  },
 	  messages: {
@@ -301,7 +304,6 @@ $("document").ready(function() {
 	    return form.submit();
 	  },
 	  highlight: function(element) {
-	  //	console.log("trzęsie");
 	    return $(element).parent().stop().addClass("invalid").animate({
 	      left: "-=7"
 	    }, 40).animate({
