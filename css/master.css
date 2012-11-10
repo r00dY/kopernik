@@ -58,11 +58,7 @@ body.noframe {
 .content .column {
 	width: 359px;
 	float: left;
-	padding: 0 60px;
-}
-
-.content .column:first-of-type {
-	border-right: 1px solid #212121;
+	padding: 0 60px 10px;
 }
 
 .offset {

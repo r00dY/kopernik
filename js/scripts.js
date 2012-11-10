@@ -1,5 +1,19 @@
 $("document").ready(function() {
 
+	// EQUAL COLUMNS
+	
+	var leftColumn = $(".content").find(".column").eq(0);
+	var rightColumn = $(".content").find(".column").eq(1);	
+	
+	var leftHeight = leftColumn.outerHeight();
+	var rightHeight = rightColumn.outerHeight();
+	
+	if (leftHeight > rightHeight) { 
+		leftColumn.css({'border-right': '1px solid #212121'});
+	} else { 
+		rightColumn.css({'border-left': '1px solid #212121'});
+	};
+
 	// BLOGNAV HOVER ANIMATION
 	
 	$(".blognav a.blogprev").hover(function() {
