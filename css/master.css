@@ -504,12 +504,12 @@ a#playpause {
 	position: absolute;
 }
 
-.club .descr:first-of-type {
+.club .descr:first-child {
 	top: -5px;
 	left: 60px;
 }
 
-.club .descr:last-of-type {
+.club .descr:last-child {
 	top: 460px;
 	left: 610px;
 }
