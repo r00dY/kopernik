@@ -64,7 +64,8 @@ $("document").ready(function() {
 		prev: ".lokalizacja .slidenav a.prevslide",
 		next: ".lokalizacja .slidenav a.nextslide", 
 		timeout: 0,
-		fx: "cover"
+		fx: "cover",
+		easing: "easeInOutExpo"
 	});
 	
 	function onAfter() { 
