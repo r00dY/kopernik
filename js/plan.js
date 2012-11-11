@@ -1,26 +1,3 @@
-/*$.fn.maphilight.defaults = {
-    fill: true,
-    fillColor: 'c9825d',
-    fillOpacity: 0.6,
-    stroke: true,
-    strokeColor: 'ff0000',
-    strokeOpacity: 1,
-    strokeWidth: 1,
-    fade: true,
-    alwaysOn: true,
-    neverOn: false,
-    groupBy: false,
-    wrapClass: true,
-    shadow: false,
-    shadowX: 0,
-    shadowY: 0,
-    shadowRadius: 6,
-    shadowColor: '000000',
-    shadowOpacity: 0.8,
-    shadowPosition: 'outside',
-    shadowFrom: false
-}*/
-
 $(function() {
 
 	// COORDS TRANSFORM
@@ -95,15 +72,28 @@ $(function() {
     	return false;
     });
     
-    
+    var jqDockOpts = {align: 'left', duration: 200, labels: 'tc', size: 90, distance: 85};  
+    $('.dock').jqDock(jqDockOpts);
+
     // KONDYGNACJE
     
     //$(".bryla .rzut:not(:first)").hide();
-    
+    $('.budynek:not(:first)').hide();
     $( ".bryla .dock a" ).click(function() {
     	var rzut = $(this).attr("id");
     	$(".bryla .rzut").fadeOut(300);
     	$(".bryla ." + rzut ).delay(300).slideDown(300);
+    });
+
+    $('.bud-bryla:not(:first)').hide();
+    $( "#bryla-list a" ).click(function(e) {
+        var rzut = $(this).attr("href");
+        $('#bryla-list a').removeClass('current');
+        $(this).addClass('current');
+        rzut = rzut.substring(1, rzut.length);
+        $(".bud-bryla").fadeOut(300);
+        $("#" + rzut ).delay(300).slideDown(300);
+        e.preventDefault();
     });
     
     
