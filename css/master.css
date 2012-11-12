@@ -817,6 +817,23 @@ a#playpause {
 	margin: -8px 5px 0 0;
 }
 
+.news-grid .news-more {
+	display: block;
+	clear: both;
+	font: normal 18px "futura-pt", Arial sans-serif;
+	color: #b0aba1;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	text-decoration: none;
+	text-align: center;
+	position: relative;
+	top: 10px;
+}
+
+.news-grid .news-more:hover {
+	color: #c9825d;
+}
+
 
 
 
