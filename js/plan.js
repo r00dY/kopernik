@@ -7,7 +7,7 @@ $(function() {
 		coords = $(this).attr('data-coords');
 		coords = coords.split(',');
 		for(i = 0; i < coords.length; i++) {
-			coords[i] = Math.round( parseFloat(coords[i]) / 2.34 ).toString();
+			coords[i] = Math.round( parseFloat(coords[i]) / 2.424 ).toString();
 		}	
 		coords = coords.join(',');
 		$(this).attr('data-coords', coords);
