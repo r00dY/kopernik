@@ -627,6 +627,32 @@ a#playpause {
 	margin: 0 0 40px;
 }
 
+.lokalizacja .slideshow{
+	margin-bottom:40px;
+	height:478px;
+	margin-left:0;
+}
+
+.lokalizacja .slideshow .slides{
+	height:478px;
+	width:710px;
+}
+
+.lokalizacja #pics .slideshow{
+	width:100%;
+}
+.lokalizacja p.title {
+border-top: 0;
+bottom: 0;
+color: white;
+font-size: 0.9em;
+left: 0;
+line-height: 16px;
+padding: 10px 0 0;
+position: absolute;
+width: 110px;
+}
+
 #newspics {
 	height: 478px;
 	width: 714px;

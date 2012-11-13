@@ -59,14 +59,14 @@ $("document").ready(function() {
 
 	// OLSZTYN PICS SLIDESHOW
 	
-	$('#pics, #newspics').cycle({
+	/*$('#pics, #newspics').cycle({
 		after: onAfter,
 		prev: ".lokalizacja .slidenav a.prevslide",
 		next: ".lokalizacja .slidenav a.nextslide", 
 		timeout: 0,
 		fx: "cover",
 		easing: "easeInOutExpo"
-	});
+	});*/
 	
 	function onAfter() { 
 		var opis = $(this).data('opis')
@@ -81,9 +81,11 @@ $("document").ready(function() {
 		$(".lokalizacja div.descr .sub.mapa").fadeIn();
 		$(".lokalizacja div.descr .sub.pics").fadeOut();
 		$(".lokalizacja div.descr .slidenav").fadeOut();
+		$('.title').fadeOut();
 		return false;
 	});
-	
+
+	$('.faded-title').fadeOut();
 	
 	$(".lokalizacja div.descr #togglepics").click(function() {
 		$(".lokalizacja div.descr .tool").removeClass("current");
@@ -93,6 +95,8 @@ $("document").ready(function() {
 		$(".lokalizacja div.descr .sub.mapa").fadeOut();
 		$(".lokalizacja div.descr .sub.pics").fadeIn();
 		$(".lokalizacja div.descr .slidenav").fadeIn();
+		$('.title').fadeIn();
+
 		return false;
 	});
 		
