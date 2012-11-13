@@ -176,6 +176,13 @@ var kp = {
         panelContainerW : 0,
         windowW : 0,
         showHideButton : null,
+        cornerInfoContainer: null,
+        cornerNrMieszkania: null,
+        cornerPowierzchniaM: null,
+        cornerLiczbaPokoi: null,
+        cornerPietro: null,
+        cornerCenaZaMetr: null,
+        cornerCenaBrutto: null,
         showDialog : function(el){
                         window.location.hash = el.attr('href');
                         kp.kodMieszkania.empty().html(el.data('code'));
@@ -216,7 +223,7 @@ var kp = {
 
         hidePanel : function(){
             kp.showHideButton.removeClass('shown').addClass('hidden');
-            $('#plan-dialog .panel').animate({'right' : -400 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .panel').animate({'right' : -380 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             $('#plan-dialog .rzut').animate({'width' : '650px', 'margin-left' : (kp.windowW - 650)/2 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = true;
         }
@@ -254,6 +261,14 @@ $(document).ready(function(){
     kp.pdf = $('#plan-dialog .lokal-pdf');
     kp.coordinates = $('#plan-dialog map area');
 	
+    kp.cornerInfoContainer = $('#corner-info');
+    kp.cornerInfoContainer.hide();
+    kp.cornerNrMieszkania = $('#corner-info .nr-m');
+    kp.cornerPowierzchniaM = $('#corner-info .pow-m');
+    kp.cornerLiczbaPokoi = $('#corner-info .pokoje-l');
+    kp.cornerPietro = $('#corner-info .pietro-l');
+    kp.cornerCenaZaMetr = $('#corner-info .cena-l');
+    kp.cornerCenaBrutto = $('#corner-info .brutto-l');
 	
     var urlHash = window.location.hash;
 	
@@ -309,6 +324,23 @@ $(document).ready(function(){
             
         } 
     });
+
+   $('.budynek area').mouseover(function(){
+
+        var nrM = $(this).attr('href');
+        nrM = nrM.substring(2, nrM.length);
+        kp.cornerNrMieszkania.empty().html(nrM);
+        kp.cornerPowierzchniaM.empty().html($(this).data('pow'));
+        kp.cornerLiczbaPokoi.empty().html($(this).data('pokoje'));
+        kp.cornerPietro.empty().html($(this).data('pietro'));
+        kp.cornerCenaZaMetr.empty().html($(this).data('cena'));
+        kp.cornerCenaBrutto.empty().html($(this).data('brutto'));
+        kp.cornerInfoContainer.fadeIn(100);
+   });
+
+   $('.budynek area').mouseout(function(){
+        kp.cornerInfoContainer.fadeOut(100);     
+   });
 
 });
 
