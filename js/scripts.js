@@ -75,13 +75,11 @@ $("document").ready(function() {
 	
 	$(".lokalizacja div.descr #togglemap").click(function() {
 		$(".lokalizacja div.descr .tool").removeClass("current");
-		$(this).addClass("current");
-		$(".lokalizacja #pics").fadeOut();
-		$(".lokalizacja #mapCont").fadeIn();
-		$(".lokalizacja div.descr .sub.mapa").fadeIn();
-		$(".lokalizacja div.descr .sub.pics").fadeOut();
-		$(".lokalizacja div.descr .slidenav").fadeOut();
-		$('.title').fadeOut();
+		$(this).addClass("current");	
+		$(".lokalizacja div.descr .sub.pics,.lokalizacja div.descr .slidenav,.title,.lokalizacja #pics").fadeOut(500, function(){
+			$(".lokalizacja #mapCont").fadeIn();
+			$(".lokalizacja div.descr .sub.mapa").fadeIn();
+		});
 		return false;
 	});
 
@@ -90,12 +88,13 @@ $("document").ready(function() {
 	$(".lokalizacja div.descr #togglepics").click(function() {
 		$(".lokalizacja div.descr .tool").removeClass("current");
 		$(this).addClass("current");
-		$(".lokalizacja #pics").fadeIn();
-		$(".lokalizacja #mapCont").fadeOut();
-		$(".lokalizacja div.descr .sub.mapa").fadeOut();
-		$(".lokalizacja div.descr .sub.pics").fadeIn();
-		$(".lokalizacja div.descr .slidenav").fadeIn();
-		$('.title').fadeIn();
+		$(".lokalizacja div.descr .sub.mapa,.lokalizacja #mapCont,").fadeOut(500, function(){
+			$(".lokalizacja div.descr .sub.pics").fadeIn();
+			$(".lokalizacja div.descr .slidenav").fadeIn();
+			$(".lokalizacja #pics").fadeIn();
+			$('.title').fadeIn();
+		});
+		
 
 		return false;
 	});
