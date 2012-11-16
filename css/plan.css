@@ -193,11 +193,14 @@ p.lead a {
 
 .karta .rzut {
   float: left;
-  width: 560px;
+  width: auto;
+  
 }
 
 .karta .rzut img {
-	max-width: 100%;
+	float:left;
+	max-height: 100%;
+	max-width:1200px;
 }
 
 .karta .panel {
@@ -291,14 +294,15 @@ p.lead a {
 	position:absolute;
 	z-index:9999;
 	width:100%;
-	min-height:100%;
+	/*min-height:100%;*/
 	background:#000;
 	top:0;
 	left:0;
 }
 
 #plan-dialog .container{
-	width:1000px;
+	width:100%;
+	min-width:1000px;
 	padding-bottom:50px;
 	position:relative;
 }
