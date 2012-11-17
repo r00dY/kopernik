@@ -209,7 +209,6 @@ var kp = {
                 }else{
                     margin = (kp.windowW - 420 - kp.rzutW)/2;
                 }
-
                 var r = kp.windowH*kp.ratio;
                 var panW=0;
                 if(kp.hiddenPanel){
@@ -218,16 +217,20 @@ var kp = {
                     panW = 420;
                 }
                 if(r > (kp.windowW - panW)){
-                    //kp.rzutH = (kp.windowW - 420)/kp.ratio;
                     kp.rzutH = (kp.windowW * (kp.imgH/kp.imgW))-400;
                     kp.rzutW = kp.rzutH * kp.ratio;
+                    if(kp.rzutW > 1200){
+                        kp.rzutW = 1200;
+                    }
                     margin = (kp.windowW - kp.rzutW - panW)/2;
                     if(margin < 0 ){margin=10};
                     $('#plan-dialog .rzut').css({'margin-left' : margin + 'px', 'height' : kp.rzutH + 'px'});
                 }else{
-                   // alert(r);
                     kp.rzutH = kp.windowH - 170;
                     kp.rzutW = kp.rzutH * kp.ratio;
+                    if(kp.rzutW > 1200){
+                        kp.rzutW = 1200;
+                    }
                     margin = (kp.windowW - kp.rzutW - panW)/2;
                     if(margin < 0 ){margin=10};
                     $('#plan-dialog .rzut').css({'margin-left' : margin + 'px', 'height' : kp.rzutH + 'px'});
@@ -237,10 +240,17 @@ var kp = {
                 var panel = $('#plan-dialog .panel');
                 var panelH = panel.height();
                 if(panelH > (kp.windowH - 150)){
-                    panel.css({'margin-top' : '0px'});
+                    panel.css({'padding-top' : '0px'});
                 }else{
-                    panel.css({'margin-top' : (kp.windowH -150 - panelH)/2 + 'px', 'height' : '100%'});
+                    panel.css({'padding-top' : (kp.windowH -150 - panelH)/2 + 'px', 'height' : '100%'});
+                    $('#plan-dialog .rzut').css({'margin-top' : (kp.windowH -150 - panelH)/2 + 'px'});
                 }
+                //if(kp.windowH - 150 > panelH){
+                    //$('#showhide').css({'top' : (panelH - 55)/2 + 'px'});
+                //}else{
+                    $('#showhide').css({'top' : (kp.windowH - 150 - 55)/2 + 'px'});
+                //}
+                
 
 
         },
@@ -289,10 +299,11 @@ var kp = {
                     h = kp.windowH - 170;
                     kp.rzutW = h * kp.ratio;
                 }
-
+                var margin = (kp.windowW - 400 - kp.rzutW)/2;
+                if(margin<0){margin = 10;};
             kp.showHideButton.removeClass('hidden').addClass('shown');
             $('#plan-dialog .panel').animate({'right' : '30px'}, {easing : 'easeInOutExpo', duration: 500});
-            $('#plan-dialog .rzut').animate({'margin-left' : (kp.windowW - 400 - kp.rzutW)/2 + 'px', 'height' : h + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .rzut').animate({'margin-left' : margin + 'px', 'height' : h + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = false;
         },
 
@@ -306,9 +317,11 @@ var kp = {
                 h = kp.windowH - 170;
                 kp.rzutW = h * kp.ratio;
             } 
+            var margin = (kp.windowW - kp.rzutW - 20)/2;
+            if(margin<0){margin = 10;};
             kp.showHideButton.removeClass('shown').addClass('hidden');
             $('#plan-dialog .panel').animate({'right' : -380 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
-            $('#plan-dialog .rzut').animate({'margin-left' : (kp.windowW - kp.rzutW - 20)/2 + 'px', 'height' : h + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .rzut').animate({'margin-left' : margin+ 'px', 'height' : h + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = true;
         }
         
