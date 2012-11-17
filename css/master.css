@@ -1468,6 +1468,7 @@ footer {
 	margin: 90px auto 20px;
 	height: 50px;
 	position: relative;
+	clear: both;
 }
 
 footer.bottom {
