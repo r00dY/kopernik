@@ -2,6 +2,11 @@
 	height: 1%;
 }
 
+footer p.credits a,
+.biuro a {
+	top: 6px;
+}
+
 /*
 {
 	display: inline;
