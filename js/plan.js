@@ -77,8 +77,6 @@ $(function() {
 
     // KONDYGNACJE
     
-    //$(".bryla .rzut:not(:first)").hide();
-    $('.budynek:not(:first)').hide();
     $( ".bryla .dock a" ).click(function() {
     	var rzut = $(this).attr("id");
     	$(".bryla .rzut").fadeOut(300);
@@ -262,8 +260,8 @@ var kp = {
                         kp.pietro.empty().html(el.data('pietro'));
                         kp.cenaZaMetr.empty().html(el.data('cena'));
                         kp.cenaBrutto.empty().html(el.data('brutto'));
-                        kp.widokImg.attr('src', 'img/' + el.data('widok') + '.jpg');
-                        kp.rzutImg.attr('src', 'img/' + el.data('rzut') + '.png');
+                        kp.widokImg.attr('src', el.data('widok'));
+                        kp.rzutImg.attr('src', el.data('rzut'));
                         kp.pdf.attr('href', el.data('pdf'));
                         kp.coordinates.attr('coords', el.data('coords'));
                         
