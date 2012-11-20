@@ -635,9 +635,14 @@ a#playpause {
 	margin-left:0;
 }
 
-.lokalizacja .slideshow .slides{
+.lokalizacja.newsroom .slideshow .slides{
 	height:478px;
 	width:760px;
+}
+
+.lokalizacja .slideshow .slides{
+	height:478px;
+	width:710px;
 }
 
 .lokalizacja #pics .slideshow{
