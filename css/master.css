@@ -1614,3 +1614,10 @@ footer p.credits .underline {
 	visibility: hidden;
 	overflow: hidden;
 }
+
+/* listy punktowane w tekście */
+
+.cke ul {
+	list-style-type: disc;
+	margin-left: 20px;
+}
