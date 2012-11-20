@@ -7,6 +7,23 @@ footer p.credits a,
 	top: 6px;
 }
 
+h2,
+h3,
+nav,
+a#playpause,
+#carousel .description a.film,
+.lokalizacja div.descr .tool,
+.news-feature h3,
+.news-item .meta h4,
+.news-grid .news-more,
+.mieszkania dl dt,
+.mieszkania .segments a.seg,
+h1.newsroom-title,
+.slideshow .tools a.pause,
+.slideshow .tools a.pokaz {
+	font-family: Arial, sans-serif !important /* important dla pewności ;) */;
+}
+
 /*
 {
 	display: inline;
