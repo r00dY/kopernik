@@ -49,12 +49,7 @@ body.noframe {
 }
 
 .content {
-	margin-top: 190px;
 	position: relative;
-}
-
-.content.nosub {
-	margin-top: 100px;
 }
 
 .content .column {
@@ -156,7 +151,8 @@ ul.proper {
 
 header {
 	width: 960px;
-	margin: 0 auto 84px;
+	margin: 0 auto 40px;
+	border: 1px solid red;
 }
 
 h1.logo {
