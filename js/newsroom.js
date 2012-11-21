@@ -39,9 +39,9 @@ var nr = {
 					nr.img = $('.slideshow .slides .slide');
 					//nr.image.css({'width' : nr.sliderWidth + 'px'});
 					nr.imgCollectionLength = nr.img.length;
-					$.each(nr.img, function(index, value){
-						if($(this).height() > nr.sliderHeight){
-							$(this).css({'margin-top' : nr.sliderHeight - $(this).height() + 'px'});
+					$('.slideshow .slides .slide img').each(function(index, value){
+						if($(this).height() < nr.sliderHeight){
+							$(this).css({'margin-top' : (nr.sliderHeight - $(this).height())/2 + 'px'});
 						}
 							
 						
