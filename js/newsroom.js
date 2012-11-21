@@ -9,6 +9,7 @@ var nr = {
 		
 		
 		nr.setImages();
+		nr.hideImg();
 
 		nr.titleHolder = $('.title span');
 		var next = $('.slides .slide:first');
@@ -36,45 +37,59 @@ var nr = {
 	setImages : function(){
 					nr.image = $('.slideshow .slides img');
 					nr.img = $('.slideshow .slides .slide');
-					nr.image.css({'width' : nr.sliderWidth + 'px'});
+					//nr.image.css({'width' : nr.sliderWidth + 'px'});
 					nr.imgCollectionLength = nr.img.length;
 					$.each(nr.img, function(index, value){
-							$(this).css({'z-index' : nr.imgCollectionLength - index});
+						if($(this).height() > nr.sliderHeight){
+							$(this).css({'margin-top' : nr.sliderHeight - $(this).height() + 'px'});
+						}
+							
 						
 					});
 				},
 
+	hideImg : function(){
+					$('.slideshow .slides .slide:not(:first)').fadeOut();
+				},
+
 	nextSlide : function(){
 					var next = $('.slides .slide:first');
-					nr.setSlideTitle(next.next().find('img').attr('alt'));
-					nr.setDisplayTitle(next.next().data('display'));
+					
 					//nr.titleDisplay.empty().html(next.data('display'));
-					next.animate({'width' : '0px'}, {
-						duration: nr.easingDuration,
-						easing : nr.easingEffect,
-						complete : function(){
-							$('.slides').append($(this));
-							$(this).css({'width' : '100%'});
-							nr.setImages();
-						}
+
+					next.fadeOut(300, function(){
+						$(this).next().fadeIn();
+						nr.setSlideTitle($(this).next().find('img').attr('alt'));
+						nr.setDisplayTitle($(this).next().data('display'));
+						$('.slides .slide:last').after($(this));
+						
+						//$(this).fadeOut();
 					})
 					
 				},
 	prevSlide : function(){
-					var cont = $('.slides .slide:last').css({'width' : '0px'});
-					$('.slides').prepend(cont);
-					nr.setImages();
+					//var cont = $('.slides .slide:last').css({'width' : '0px'});
+					//$('.slides').prepend(cont);
+					//nr.setImages();
 					var prev = $('.slides .slide:first');
+					var last = $('.slides .slide:last');
 					
-					nr.setSlideTitle(prev.find('img').attr('alt'));
-					nr.setDisplayTitle(prev.data('display'));
-					prev.animate({'width' : '100%'}, {
+					
+					/*prev.animate({'width' : '100%'}, {
 						duration: nr.easingDuration,
 						easing : nr.easingEffect,
 						complete: function(){
-							nr.titleDisplay.empty().html($(this).data('display'));
+							
 						}
-					})
+					})*/
+
+					prev.fadeOut(300, function(){
+						prev.before(last);
+						nr.setSlideTitle($('.slides .slide:first').find('img').attr('alt'));
+						nr.setDisplayTitle($('.slides .slide:first').data('display'));
+						$('.slides .slide:first').fadeIn();
+						
+					});
 					
 				},
 

@@ -1374,6 +1374,15 @@ body.wizualizacje{
 	left:0;
 }
 
+.lokalizacja .slideshow .slides .slide{
+	text-align:center;
+}
+
+.lokalizacja .slideshow .slides .slide img{
+	height:auto;
+	position:relative;
+}
+
 .slideshow .slides .slide img {
 	height: 100%;
 	position:absolute;

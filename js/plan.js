@@ -155,6 +155,7 @@ var preloadImages = function(im) {
         );
     }   
 
+
 var kp = {
 
         planDialog : null,
@@ -216,26 +217,9 @@ var kp = {
                 }else{
                     panW = 420;
                 }
-                if(r > (kp.windowW - panW)){
-                    kp.rzutH = (kp.windowW * (kp.imgH/kp.imgW))-400;
-                    kp.rzutW = kp.rzutH * kp.ratio;
-                    if(kp.rzutW > 1200){
-                        kp.rzutW = 1200;
-                    }
-                    margin = (kp.windowW - kp.rzutW - panW)/2;
-                    if(margin < 0 ){margin=10};
-                    $('#plan-dialog .rzut').css({'margin-left' : margin + 'px', 'height' : kp.rzutH + 'px'});
-                }else{
-                    kp.rzutH = kp.windowH - 170;
-                    kp.rzutW = kp.rzutH * kp.ratio;
-                    if(kp.rzutW > 1200){
-                        kp.rzutW = 1200;
-                    }
-                    margin = (kp.windowW - kp.rzutW - panW)/2;
-                    if(margin < 0 ){margin=10};
-                    $('#plan-dialog .rzut').css({'margin-left' : margin + 'px', 'height' : kp.rzutH + 'px'});
-                    console.log('weszlo');
-                } 
+                
+
+                $('#plan-dialog .rzut').css({'height' : kp.windowH - 100 + 'px', 'width' : kp.windowW - panW +'px'});
 
                 var panel = $('#plan-dialog .panel');
                 var panelH = panel.height();
@@ -243,30 +227,56 @@ var kp = {
                     panel.css({'padding-top' : '0px'});
                 }else{
                     panel.css({'padding-top' : (kp.windowH -150 - panelH)/2 + 'px', 'height' : '100%'});
-                    $('#plan-dialog .rzut').css({'margin-top' : (kp.windowH -150 - panelH)/2 + 'px'});
+                    //$('#plan-dialog .rzut').css({'margin-top' : (kp.windowH -150 - panelH)/2 + 'px'});
                 }
-                //if(kp.windowH - 150 > panelH){
-                    //$('#showhide').css({'top' : (panelH - 55)/2 + 'px'});
-                //}else{
                     $('#showhide').css({'top' : (kp.windowH - 150 - 55)/2 + 'px'});
-                //}
                 
 
 
         },
         showDialog : function(el){
                         window.location.hash = el.attr('href');
+                        
                         kp.kodMieszkania.empty().html(el.data('code'));
-                        kp.powierzchniaM.empty().html(el.data('pow'));
-                        kp.liczbaPokoi.empty().html(el.data('pokoje'));
-                        kp.pietro.empty().html(el.data('pietro'));
-                        kp.cenaZaMetr.empty().html(el.data('cena'));
-                        kp.cenaBrutto.empty().html(el.data('brutto'));
+                        
+                        if(el.data('pow') == ''){
+                            kp.powierzchniaM.parent().parent().hide();
+                        }else{
+                            kp.powierzchniaM.parent().parent().show();
+                            kp.powierzchniaM.empty().html(el.data('pow'));
+                        }
+
+                        if(el.data('pokoje') == ''){
+                            kp.liczbaPokoi.parent().parent().hide();
+                        }else{
+                            kp.liczbaPokoi.parent().parent().show();
+                            kp.liczbaPokoi.empty().html(el.data('pokoje'));
+                        }
+                        if(el.data('pietro') == ''){
+                            kp.pietro.parent().parent().hide();
+                        }else{
+                            kp.pietro.parent().parent().show();
+                            kp.pietro.empty().html(el.data('pietro'));
+                        }
+                        if(el.data('cena') == ''){
+                            kp.cenaZaMetr.parent().parent().hide();
+                        }else{
+                            kp.cenaZaMetr.parent().parent().show();
+                            kp.cenaZaMetr.empty().html(el.data('cena'));
+                        }
+                        if(el.data('brutto') == ''){
+                            kp.cenaBrutto.parent().parent().hide();
+                        }else{
+                            kp.cenaBrutto.parent().parent().show();
+                            kp.cenaBrutto.empty().html(el.data('brutto'));
+                        }
+
                         kp.widokImg.attr('src', 'img/' + el.data('widok') + '.jpg');
                         kp.rzutImg.attr('src', 'img/' + el.data('rzut') + '.png');
                         kp.pdf.attr('href', el.data('pdf'));
                         kp.coordinates.attr('coords', el.data('coords'));
                         
+
                         $('#plan-dialog .rzut img').imagesLoaded(function(){ 
                             $('#plan-dialog').show(10, function(){
                                 $.scrollTo(0, {
@@ -303,7 +313,7 @@ var kp = {
                 if(margin<0){margin = 10;};
             kp.showHideButton.removeClass('hidden').addClass('shown');
             $('#plan-dialog .panel').animate({'right' : '30px'}, {easing : 'easeInOutExpo', duration: 500});
-            $('#plan-dialog .rzut').animate({'margin-left' : margin + 'px', 'height' : h + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 400 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = false;
         },
 
@@ -321,7 +331,7 @@ var kp = {
             if(margin<0){margin = 10;};
             kp.showHideButton.removeClass('shown').addClass('hidden');
             $('#plan-dialog .panel').animate({'right' : -380 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
-            $('#plan-dialog .rzut').animate({'margin-left' : margin+ 'px', 'height' : h + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 20 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = true;
         }
         

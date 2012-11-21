@@ -132,6 +132,7 @@ p.lead a {
 	font-size: 13px;
 	color: #fff;
 	width: 102px;
+	min-height:260px;
 }
 
 #budinfo {
@@ -193,14 +194,15 @@ p.lead a {
 
 .karta .rzut {
   float: left;
-  width: auto;
+  text-align:center; 
   
 }
 
 .karta .rzut img {
-	float:left;
 	max-height: 100%;
-	max-width:1200px;
+	max-width:100%;
+	margin-left:auto;
+	margin-right:auto;
 }
 
 .karta .panel {
@@ -238,6 +240,7 @@ p.lead a {
 	color: #fff;
 	text-transform: uppercase;
 	margin: 0 0 25px;
+	min-height:30px;
 }
 
 .panel .bud-info,
