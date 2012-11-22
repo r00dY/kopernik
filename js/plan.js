@@ -83,7 +83,7 @@ $(function() {
     	$(".bryla ." + rzut ).delay(300).slideDown(300);
     });
 
-    //$('.bud-bryla:not(:first)').hide();
+    $('.bud-bryla:not(:first)').hide();
     
 	$( "#bryla-list a" ).click(function(e) {
         var rzut = $(this).attr("href");
