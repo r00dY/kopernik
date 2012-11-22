@@ -1,5 +1,25 @@
 $("document").ready(function() {
 
+	// STICKY NAVIGATION
+	
+    var sticky_navigation_offset_top = $('nav').offset().top;
+     
+    var sticky_navigation = function(){
+        var scroll_top = $(window).scrollTop();
+        if (scroll_top > sticky_navigation_offset_top) { 
+            $('nav').css({ 'position': 'fixed', 'top':0, 'left':0 });
+        } else {
+            $('nav').css({ 'position': 'relative' }); 
+        }   
+    };
+     
+    sticky_navigation();
+    
+    $(window).scroll(function() {
+         sticky_navigation();
+    });
+	 
+
 	// EQUAL COLUMNS
 	
 	var leftColumn = $(".content").find(".column").eq(0);
