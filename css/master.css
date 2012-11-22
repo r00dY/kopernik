@@ -1365,7 +1365,7 @@ body.wizualizacje{
 	overflow:hidden;
 	height:600px;
 	width:97%;
-	margin-top: 153px;
+	margin-top: 0px;
 }
 
 .slideshow .slides {
@@ -1424,7 +1424,8 @@ top: 50%;
 	background: url(../img/bg-slidenav.png) 0 0 no-repeat;
 }
 
-.slideshow .slidenav a {
+
+ .slidenav a {
 	display: block;
 	text-indent: -99999em;
 	width: 52px;
