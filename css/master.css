@@ -40,6 +40,7 @@ body.noframe {
 	width: 960px;
 	margin: 0 auto;
 	background-color: #000;
+	overflow: hidden;
 }
 
 .container.full {
@@ -50,6 +51,11 @@ body.noframe {
 
 .content {
 	position: relative;
+	margin-top: 170px;
+}
+
+.content.nosub {
+	margin-top: 100px;
 }
 
 .content .column {
@@ -151,9 +157,10 @@ ul.proper {
 
 header {
 	width: 960px;
-	margin: 0 auto 14px;
+	background-color: #000;
+	margin: 0 auto 15px;
 }
-
+ 
 h1.logo {
 	width: 240px;
 	margin: 40px auto 0;
@@ -168,14 +175,19 @@ h1.logo a {
 }
 
 nav {
-	margin: 40px 0 0;
-	padding-bottom:25px;
+	margin: 0;
+	padding: 25px 0 25px;
 	font: normal 16px "futura-pt", sans-serif;
 	text-transform: uppercase;
 	float: left;
 	width: 100%;
 	overflow: hidden;
-	position: relative;
+	z-index: 10;
+	background: #181818 url(../img/bg-body.png) 50% 0 repeat-y;
+}
+
+.noframe nav {
+	background: #000 none;
 }
 
 nav ul.mainnav {
@@ -231,7 +243,7 @@ nav ul.subnav {
 	width: 840px;
 	border-bottom: 1px solid #212121;
 	border-top: 1px solid #212121;
-	margin: 40px 0 0;
+	margin: 40px auto -15px;
 	padding: 0 60px;
 }
 
@@ -311,13 +323,13 @@ a.nextpage {
 /* GLOWNA */
 
 #carousel {
-
 	left: 0;
 	width: 100%;
 	height: 600px;
 	overflow: hidden;
 	padding-top:33px;
 	position:relative;
+	margin-top: 60px;
 }
 
 a.pokaz {
@@ -1353,6 +1365,7 @@ body.wizualizacje{
 	overflow:hidden;
 	height:600px;
 	width:97%;
+	margin-top: 0px;
 }
 
 .slideshow .slides {
@@ -1411,7 +1424,8 @@ top: 50%;
 	background: url(../img/bg-slidenav.png) 0 0 no-repeat;
 }
 
-.slideshow .slidenav a {
+
+ .slidenav a {
 	display: block;
 	text-indent: -99999em;
 	width: 52px;
