@@ -77,15 +77,24 @@ $(function() {
 
     // KONDYGNACJE
     
+    //$(".bryla .rzut:not(:first)").hide();
+    $('.budynek:not(:first)').hide();
     $( ".bryla .dock a" ).click(function() {
     	var rzut = $(this).attr("id");
     	$(".bryla .rzut").fadeOut(300);
     	$(".bryla ." + rzut ).delay(300).slideDown(300);
+        var path = window.location.pathname;
+        //if(path.charAt(path.length-1) == '/' && /\d/.test(path.charAt(path.length-2))){
+            path = path.substring(0,path.length-2);
+            var rz = rzut.substring(rzut.length-1);
+            path = path + rz + '/';
+            //window.history.pushState(path, 'tytul', path);
+            History.pushState('blabla', "State 1", '/5');
+        //}
     });
 
     $('.bud-bryla:not(:first)').hide();
-    
-	$( "#bryla-list a" ).click(function(e) {
+    $( "#bryla-list a" ).click(function(e) {
         var rzut = $(this).attr("href");
         $('#bryla-list a').removeClass('current');
         $(this).addClass('current');
@@ -182,6 +191,7 @@ var kp = {
         windowW : 0,
         windowH: 0,
         windowRatio: 0,
+        state: null,
         showHideButton : null,
         cornerInfoContainer: null,
         cornerNrMieszkania: null,
@@ -212,9 +222,9 @@ var kp = {
                 var r = kp.windowH*kp.ratio;
                 var panW=0;
                 if(kp.hiddenPanel){
-                    panW = 50;
+                    panW = 20;
                 }else{
-                    panW = 450;
+                    panW = 420;
                 }
                 
 
@@ -235,7 +245,9 @@ var kp = {
         },
         showDialog : function(el){
                         window.location.hash = el.attr('href');
-                        
+                        if(kp.windowH > 550){
+                            $('body').css({'overflow' : 'hidden'});
+                        }
                         kp.kodMieszkania.empty().html(el.data('code'));
                         
                         if(el.data('pow') == ''){
@@ -270,13 +282,8 @@ var kp = {
                             kp.cenaBrutto.empty().html(el.data('brutto'));
                         }
 
-                        kp.powierzchniaM.empty().html(el.data('pow'));
-                        kp.liczbaPokoi.empty().html(el.data('pokoje'));
-                        kp.pietro.empty().html(el.data('pietro'));
-                        kp.cenaZaMetr.empty().html(el.data('cena'));
-                        kp.cenaBrutto.empty().html(el.data('brutto'));
-                        kp.widokImg.attr('src', el.data('widok'));
-                        kp.rzutImg.attr('src', el.data('rzut'));
+                        kp.widokImg.attr('src', 'img/' + el.data('widok') + '.jpg');
+                        kp.rzutImg.attr('src', 'img/' + el.data('rzut') + '.png');
                         kp.pdf.attr('href', el.data('pdf'));
                         kp.coordinates.attr('coords', el.data('coords'));
                         
@@ -306,60 +313,67 @@ var kp = {
 
             var r = kp.windowH*kp.ratio;
             var h = 0;
-                if(r > (kp.windowW - 450)){
-                    h = (kp.windowW * (kp.imgH/kp.imgW))-450;
+                if(r > (kp.windowW - 400)){
+                    h = (kp.windowW * (kp.imgH/kp.imgW))-400;
                     kp.rzutW = h * kp.ratio;
                 }else{
                     h = kp.windowH - 170;
                     kp.rzutW = h * kp.ratio;
                 }
-                var margin = (kp.windowW - 450 - kp.rzutW)/2;
+                var margin = (kp.windowW - 400 - kp.rzutW)/2;
                 if(margin<0){margin = 10;};
             kp.showHideButton.removeClass('hidden').addClass('shown');
             $('#plan-dialog .panel').animate({'right' : '30px'}, {easing : 'easeInOutExpo', duration: 500});
-            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 450 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 420 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = false;
         },
 
         hidePanel : function(){
             var r = kp.windowH*kp.ratio;
             var h = 0;
-            if(r > (kp.windowW - 50)){
+            if(r > (kp.windowW - 20)){
                 h = (kp.windowW * (kp.imgH/kp.imgW))-170;
                 kp.rzutW = h * kp.ratio;
             }else{
                 h = kp.windowH - 170;
                 kp.rzutW = h * kp.ratio;
             } 
-            var margin = (kp.windowW - kp.rzutW - 50)/2;
+            var margin = (kp.windowW - kp.rzutW - 20)/2;
             if(margin<0){margin = 10;};
             kp.showHideButton.removeClass('shown').addClass('hidden');
             $('#plan-dialog .panel').animate({'right' : -380 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
-            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 50 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 20 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = true;
         }
         
     };
 
 $(document).ready(function(){
+    History.Adapter.bind(window,'statechange',function(event) { //do podgladu logów w konsoli przy zmianie w historii
+         
+         History.log('statechange:', State.data, State.title, State.url);
+         console.log(event);
+    });
+    kp.state = History.getState(); 
+    alert(kp.state.url);
     kp.cache = new Array();
     $('area.lokal').each(function(){
         var rzut = $(this).data('rzut');
-        var rzutToPush = rzut; //nazwy plikow z rzutami
+        var rzutToPush = 'img/' + rzut + '.png'; //nazwy plikow z rzutami
         var widok = $(this).data('widok');
-        var widokToPush = widok;// nazwy plikow z widokami
+        var widokToPush = 'img/' + widok + '.jpg';// nazwy plikow z widokami
         kp.cache.push(rzutToPush);
         kp.cache.push(widokToPush);
     });
     
     preloadImages(kp.cache);
-    /*kp.cachedImg[0].onload=function(){
+    kp.cachedImg[0].onload=function(){
     	//alert(this.width);
-    }*/
+    }
     kp.showHideButton = $('#plan-dialog a#showhide');
     kp.init();
     kp.planDialog = $('#plan-dialog');
-    kp.planDialog.css({'height' : getDocHeight() + 'px'});
+    //kp.planDialog.css({'height' : getDocHeight() + 'px'});
     kp.kodMieszkania = $('#plan-dialog .kod-mieszkania');
     kp.powierzchniaM = $('#plan-dialog .pow-m');
     kp.liczbaPokoi = $('#plan-dialog .pokoje-l');
@@ -404,6 +418,7 @@ $(document).ready(function(){
         $('#plan-dialog .karta').animate({'scale' : '0.7', 'opacity' : '0'}, {easing : 'easeInOutExpo', duration: 500,
                         complete: function(){
                             $('#plan-dialog').fadeOut(100);
+                            $('body').css({'overflow' : 'auto'});
                             kp.showPanel();
                         }
                     });
@@ -427,39 +442,11 @@ $(document).ready(function(){
         var nrM = $(this).attr('href');
         nrM = nrM.substring(2, nrM.length);
         kp.cornerNrMieszkania.empty().html(nrM);
-
-        if($(this).data('pow') == ''){
-            kp.cornerPowierzchniaM.parent().parent().hide();
-        }else{
-            kp.cornerPowierzchniaM.parent().parent().show();
-            kp.cornerPowierzchniaM.empty().html($(this).data('pow'));
-        }
-
-        if($(this).data('pokoje') == ''){
-            kp.cornerLiczbaPokoi.parent().parent().hide();
-        }else{
-            kp.cornerLiczbaPokoi.parent().parent().show();
-            kp.cornerLiczbaPokoi.empty().html($(this).data('pokoje'));
-        }
-        if($(this).data('pietro') == ''){
-            kp.cornerPietro.parent().parent().hide();
-        }else{
-            kp.cornerPietro.parent().parent().show();
-            kp.cornerPietro.empty().html($(this).data('pietro'));
-        }
-        if($(this).data('cena') == ''){
-            kp.cornerCenaZaMetr.parent().parent().hide();
-        }else{
-            kp.cornerCenaZaMetr.parent().parent().show();
-            kp.cornerCenaZaMetr.empty().html($(this).data('cena'));
-        }
-        if($(this).data('brutto') == ''){
-            kp.cornerCenaBrutto.parent().parent().hide();
-        }else{
-            kp.cornerCenaBrutto.parent().parent().show();
-            kp.cornerCenaBrutto.empty().html($(this).data('brutto'));
-        }
-
+        kp.cornerPowierzchniaM.empty().html($(this).data('pow'));
+        kp.cornerLiczbaPokoi.empty().html($(this).data('pokoje'));
+        kp.cornerPietro.empty().html($(this).data('pietro'));
+        kp.cornerCenaZaMetr.empty().html($(this).data('cena'));
+        kp.cornerCenaBrutto.empty().html($(this).data('brutto'));
         kp.cornerInfoContainer.fadeIn(100);
    });
 
@@ -476,11 +463,12 @@ $(window).resize(function(){
 
 $(window).load(function(){
     var urlHash = window.location.hash;
-    
+    var path = window.location.pathname;
     console.log(urlHash);
     if(urlHash != ''){
         kp.showDialog($('area.lokal[href="' + urlHash + '"]'))
     }
+
     $('area.lokal').bind('click', function(e){
         e.preventDefault();
         $('#plan-dialog .karta').animate({'scale' : '0.7', 'opacity' : '0'},10);
