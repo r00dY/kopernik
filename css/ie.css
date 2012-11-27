@@ -26,12 +26,9 @@ h1.newsroom-title,
 
 .bryla .budynki li
 ul.pietra {
-	font-weight: normal !important;
+	font-weight: 100 !important;
 }
 
-/*
-{
-	display: inline;
-	position: relative;	
+nav ul.mainnav li {
+	padding: 0 25px;
 }
-*/
