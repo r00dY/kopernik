@@ -37,12 +37,12 @@ $(function() {
 		fillOpacity: 0.6
 	});
 
+    
     $("img.widok-kondygnacji").maphilight({
         stroke: false,
         fillColor: 'c9825d',
         fillOpacity: 0.6
     });
-
     
     
 	
@@ -79,29 +79,37 @@ $(function() {
     
     //$(".bryla .rzut:not(:first)").hide();
     $('.budynek:not(:first)').hide();
-    $( ".bryla .dock a" ).click(function() {
-    	var rzut = $(this).attr("id");
+    $( ".bryla .dock a" ).click(function(e) {
+        e.preventDefault();
+    	var rzut = $(this).attr('href');
+        rzut = rzut.substring(1, rzut.length);
+        changeHash(rzut);
     	$(".bryla .rzut").fadeOut(300);
-    	$(".bryla ." + rzut ).delay(300).slideDown(300);
-        var path = window.location.pathname;
-        //if(path.charAt(path.length-1) == '/' && /\d/.test(path.charAt(path.length-2))){
-            path = path.substring(0,path.length-2);
-            var rz = rzut.substring(rzut.length-1);
-            path = path + rz + '/';
-            //window.history.pushState(path, 'tytul', path);
-            History.pushState('blabla', "State 1", '/5');
-        //}
+    	$(".bryla ." + rzut ).delay(300).slideDown(300, function(){
+            $("img.widok-kondygnacji").maphilight({
+                stroke: false,
+                fillColor: 'c9825d',
+                fillOpacity: 0.6
+            });
+        });
+        
     });
 
     $('.bud-bryla:not(:first)').hide();
     $( "#bryla-list a" ).click(function(e) {
+        e.preventDefault();
         var rzut = $(this).attr("href");
         $('#bryla-list a').removeClass('current');
         $(this).addClass('current');
         rzut = rzut.substring(1, rzut.length);
         $(".bud-bryla").fadeOut(300);
-        $("#" + rzut ).delay(300).slideDown(300);
-        e.preventDefault();
+        $("#" + rzut ).delay(300).slideDown(300, function(){
+            $("img#bryla").maphilight({
+                stroke: false,
+                fillColor: 'c9825d',
+                fillOpacity: 0.6
+            });
+        });
     });
     
     
@@ -163,6 +171,25 @@ var preloadImages = function(im) {
         );
     }   
 
+var addToHash = function(lokal){
+    lokal = lokal.substring(1);
+    var urlHash = window.location.hash;
+    var hash = urlHash.split('-');
+    window.location.hash = hash[0] + '-' + lokal;
+}
+
+var removeFromHash = function(){
+    var urlHash = window.location.hash;
+    var hash = urlHash.split('-');
+    var pietro = hash[0];
+    pietro = pietro.substring(1);
+    window.location.hash = pietro;
+}
+
+var changeHash = function(floor){
+    console.log(floor);
+    window.location.hash = floor;
+}
 
 var kp = {
 
@@ -244,7 +271,7 @@ var kp = {
 
         },
         showDialog : function(el){
-                        window.location.hash = el.attr('href');
+                        addToHash(el.attr('href'));
                         if(kp.windowH > 550){
                             $('body').css({'overflow' : 'hidden'});
                         }
@@ -349,13 +376,6 @@ var kp = {
     };
 
 $(document).ready(function(){
-    History.Adapter.bind(window,'statechange',function(event) { //do podgladu logów w konsoli przy zmianie w historii
-         
-         History.log('statechange:', State.data, State.title, State.url);
-         console.log(event);
-    });
-    kp.state = History.getState(); 
-    alert(kp.state.url);
     kp.cache = new Array();
     $('area.lokal').each(function(){
         var rzut = $(this).data('rzut');
@@ -414,13 +434,13 @@ $(document).ready(function(){
    $('#plan-dialog .close').bind('click', function(e){
         e.preventDefault();
         
-        window.location.hash = '';
+        
         $('#plan-dialog .karta').animate({'scale' : '0.7', 'opacity' : '0'}, {easing : 'easeInOutExpo', duration: 500,
                         complete: function(){
                             $('#plan-dialog').fadeOut(100);
                             $('body').css({'overflow' : 'auto'});
-                            kp.showPanel();
-                        }
+                            kp.showPanel
+                            removeFromHash();                        }
                     });
                 
    });
@@ -462,11 +482,31 @@ $(window).resize(function(){
 });
 
 $(window).load(function(){
+    window.location.hash = 'p1';
     var urlHash = window.location.hash;
     var path = window.location.pathname;
     console.log(urlHash);
     if(urlHash != ''){
-        kp.showDialog($('area.lokal[href="' + urlHash + '"]'))
+        var hash = urlHash.split('-');
+        if(hash.length == 1){
+            var pietro = hash[0];
+            pietro = pietro.substring(1);
+            $('.bryla a').removeClass('current');
+            $('.bryla a[href="#' + pietro + '"]').addClass('current');
+            $('.bud-bryla').hide();
+            $('#' + pietro).show();
+        }
+        if(hash.length == 2){
+            var pietro = hash[0];
+            pietro = pietro.substring(1);
+            var lokal = hash[1];
+            $('.bryla a').removeClass('current');
+            $('.bryla a[href="' + pietro + '"]').addClass('current');
+            $('.bud-bryla').hide();
+            $('#' + pietro).show();
+            kp.showDialog($('area.lokal[href="#' + lokal + '"]'))
+        }
+        
     }
 
     $('area.lokal').bind('click', function(e){
@@ -476,3 +516,18 @@ $(window).load(function(){
             
     });
 });
+
+
+
+
+
+
+/*        //if(path.charAt(path.length-1) == '/' && /\d/.test(path.charAt(path.length-2))){
+            path = path.substring(0,path.length-2);
+            var rz = rzut.substring(rzut.length-1);
+            path = path + rz + '/';
+            //window.history.pushState(path, 'tytul', path);
+            History.pushState('blabla', "State 1", '/5');
+        //}
+
+        */

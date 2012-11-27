@@ -192,6 +192,10 @@ p.lead a {
 	top: 35px;
 }
 
+#plan-dialog .container{
+	padding:0;
+}
+
 .karta .rzut {
   float: left;
   text-align:center; 
