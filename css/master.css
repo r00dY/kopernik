@@ -39,7 +39,7 @@ body.noframe {
 .container {
 	width: 960px;
 	margin: 0 auto;
-	padding: 0 66px;
+	padding: 0 70px;
 	overflow: hidden;
 }
 
@@ -940,14 +940,14 @@ width: 110px;
 	width: 868px;
 	height: 829px;
 	position: absolute;
-	right: -62px;
+	right: -69px;
 	top: -130px;
 	z-index: 1;
 }
 
 .mieszkania #segprev img {
 	position: absolute;
-	right: -3px; top: 0;
+	right: 0; top: 0;
 	z-index: 5;
 }
 
