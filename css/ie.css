@@ -24,6 +24,11 @@ h1.newsroom-title,
 	font-family: Arial, sans-serif !important /* important dla pewności ;) */;
 }
 
+.bryla .budynki li
+ul.pietra {
+	font-weight: normal !important;
+}
+
 /*
 {
 	display: inline;
