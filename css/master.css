@@ -1394,7 +1394,7 @@ body.wizualizacje{
 
 .lokalizacja .slideshow .slides .slide img{
 	height:auto;
-	position:relative;
+	position:static;
 }
 
 .slideshow .slides .slide img {
