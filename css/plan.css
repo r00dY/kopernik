@@ -43,7 +43,7 @@ p.lead a {
 }
 
 .bryla .budynki.lower {
-	width: 110px;
+	width: 140px;
 	left: 10px; top: 20px;
 	text-transform: none;
 	font: normal 24px "ChartWell Bars", "futura-pt", Arial sans-serif;
@@ -313,6 +313,7 @@ p.lead a {
 	min-width:1000px;
 	padding-bottom:50px;
 	position:relative;
+	min-height:100%;
 }
 
 .nr-lokalu{
@@ -321,4 +322,8 @@ p.lead a {
 	color:#fff;
 	font-size:27px;
 	display:none;
+}
+
+#corner-info{
+display:none;
 }
