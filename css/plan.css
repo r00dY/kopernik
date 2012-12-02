@@ -275,6 +275,10 @@ min-height:500px;
 	height:228px;
 }
 
+.ie8 .panel div.widok-container{
+	left:0;
+}
+
 .panel .tool {
 	clear: both;
 	width: 208px;
