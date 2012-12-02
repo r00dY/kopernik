@@ -104,7 +104,6 @@ div.checker {
   width: 15px;
   height: 15px;
   position: relative;
-  top: -11px;
 }
 
 div.checker input {
@@ -500,7 +499,6 @@ div.checker {
 
 div.checker span {
   display: -moz-inline-box;
-  display: inline-block;
   text-align: center;
 }
 
