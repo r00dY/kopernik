@@ -20,7 +20,11 @@ a#playpause,
 .mieszkania .segments a.seg,
 h1.newsroom-title,
 .slideshow .tools a.pause,
-.slideshow .tools a.pokaz {
+.slideshow .tools a.pokaz,
+ul.budynki li a,
+ul.pietra li,
+ul.bud-info li.nr-mieszkania
+.bryla {
 	font-family: Arial, sans-serif !important /* important dla pewności ;) */;
 }
 
@@ -31,4 +35,12 @@ ul.pietra {
 
 nav ul.mainnav li {
 	padding: 0 25px;
+}
+
+.mieszkania dl dt {
+ font-size: 20px;
+}
+
+a.seg {
+ font-size: 10px;
 }
