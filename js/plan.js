@@ -349,8 +349,8 @@ var kp = {
                                 $('#plan-dialog .karta').animate({'scale' : '1', 'opacity' : '1'}, {easing : 'easeInOutExpo', duration: 500});
                                 kp.setDims();
                                 if(kp.windowH > 550){
-                                   // $('body').css({'overflow' : 'hidden'});
-                                $('#plan-dialog').css({'position' : 'fixed'});
+                                    $('body').css({'overflow' : 'hidden'});
+                                //$('#plan-dialog').css({'position' : 'fixed'});
                                 }
                             });
                             
