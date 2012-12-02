@@ -1,41 +1,52 @@
 $(function() {
 
-	// COORDS TRANSFORM
+    // COORDS TRANSFORM
 
-	areas = $('area.lokal');
-	areas.each(function() {
-		coords = $(this).attr('data-coords');
-		coords = coords.split(',');
-		for(i = 0; i < coords.length; i++) {
-			coords[i] = Math.round( parseFloat(coords[i]) / 2.424 ).toString();
-		}	
-		coords = coords.join(',');
-		$(this).attr('data-coords', coords);
-	});
+    areas = $('area.lokal');
+    areas.each(function() {
+        coords = $(this).attr('data-coords');
+        coords = coords.split(',');
+        for(i = 0; i < coords.length; i++) {
+            coords[i] = Math.round( parseFloat(coords[i]) / 2.424 ).toString();
+        }   
+        coords = coords.join(',');
+        $(this).attr('data-coords', coords);
+    });
 
-	// PANEL BUTTONS
-	
-	$(".panel .tool a").mouseover(function(){
-		$(this).prev().stop().animate({ 'width': '208px' 
-		});
-	});
-	
-	$(".panel .tool a").mouseout(function(){
-		$(this).prev().stop().animate({'width': '0px'
-		});
-	});
+    // PANEL BUTTONS
+    
+    $(".panel .tool a").mouseover(function(){
+        $(this).prev().stop().animate({ 'width': '208px' 
+        });
+    });
+    
+    $(".panel .tool a").mouseout(function(){
+        $(this).prev().stop().animate({'width': '0px'
+        });
+    });
 
+var Browser = {
+  Version: function() {
+    var version = 999; // we assume a sane browser
+    if (navigator.appVersion.indexOf("MSIE") != -1)
+      // bah, IE again, lets downgrade version number
+      version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+    return version;
+  }
+}    
+
+if (Browser.Version() == 8){
+            $('body').addClass('ie8');
+        }
     
 
+    // MAP HIGHLIGHT
     
-
-	// MAP HIGHLIGHT
-	
-	$("img#bryla").maphilight({
-		stroke: false,
-		fillColor: 'c9825d',
-		fillOpacity: 0.6
-	});
+    $("img#bryla").maphilight({
+        stroke: false,
+        fillColor: 'c9825d',
+        fillOpacity: 0.6
+    });
 
     
     $("img.widok-kondygnacji").maphilight({
@@ -45,31 +56,32 @@ $(function() {
     });
     
     
-	
-	
-	// MAP HOVER 
-	
-	$(".bud-bryla area").hover(function() {
-		var pietro = $(this).attr("class");
-		$(".bryla ul.pietra li." + pietro).stop().animate({"opacity" : "1"}, 400);
-	}, function() {
-		$(".bryla ul.pietra li").stop().animate({"opacity" : "0"}, 200);
-	});
-	
+    
+    
+    // MAP HOVER 
+    
+    $(".bud-bryla area").hover(function() {
+        var pietro = $(this).attr("class");
+        $(".bryla ul.pietra li." + pietro).stop().animate({"opacity" : "1"}, 400);
+    }, function() {
+        $(".bryla ul.pietra li").stop().animate({"opacity" : "0"}, 200);
+    });
+    
 
-	// DOCK EFFECT 
-	
+    //$('body').addClass('ie8');
+    // DOCK EFFECT 
+    
     $( ".bryla .dock a" ).hover(function() {
         $(this).addClass( "hover", 500);
     }, function() {
-    	$(this).removeClass( "hover", 500);
+        $(this).removeClass( "hover", 500);
     });
     
     
     $( ".bryla .dock a" ).click(function() {
-    	$( ".bryla .budynki a" ).removeClass("current");
-    	$(this).addClass("current");
-    	return false;
+        $( ".bryla .budynki a" ).removeClass("current");
+        $(this).addClass("current");
+        return false;
     });
     
     var jqDockOpts = {align: 'left', duration: 200, labels: 'tc', size: 90, distance: 85};  
@@ -78,14 +90,15 @@ $(function() {
     // KONDYGNACJE
     
     //$(".bryla .rzut:not(:first)").hide();
-    $('.budynek:not(:first)').hide();
+    //$('.budynek:not(:first)').hide();
+    
     $( ".bryla .dock a" ).click(function(e) {
         e.preventDefault();
-    	var rzut = $(this).attr('href');
+        var rzut = $(this).attr('href');
         rzut = rzut.substring(1, rzut.length);
         changeHash(rzut);
-    	$(".bryla .rzut").fadeOut(300);
-    	$(".bryla ." + rzut ).delay(300).slideDown(300, function(){
+        $(".bryla .rzut").fadeOut(300);
+        $(".bryla ." + rzut ).fadeIn(300, function(){
             $("img.widok-kondygnacji").maphilight({
                 stroke: false,
                 fillColor: 'c9825d',
@@ -95,6 +108,8 @@ $(function() {
         
     });
 
+
+
     $('.bud-bryla:not(:first)').hide();
     $( "#bryla-list a" ).click(function(e) {
         e.preventDefault();
@@ -103,7 +118,7 @@ $(function() {
         $(this).addClass('current');
         rzut = rzut.substring(1, rzut.length);
         $(".bud-bryla").fadeOut(300);
-        $("#" + rzut ).delay(300).slideDown(300, function(){
+        $("#" + rzut ).delay(300).fadeIn(300, function(){
             $("img#bryla").maphilight({
                 stroke: false,
                 fillColor: 'c9825d',
@@ -116,38 +131,38 @@ $(function() {
     // MIESZKANIE HOVER 
     
     $(".budynek a.lokal").hover(function() {
-    	
-    	//fade in
-    	$(this).stop().animate({"opacity" : "1"}, 300);
-    	
-    	
-    	// getting data attribute
-    	var pow = $(this).data('pow');    	
-    	var pokoje = $(this).data('pokoje'); 
-    	var pietro = $(this).data('pietro'); 
-    	var cena = $(this).data('cena'); 
-    	var brutto = $(this).data('brutto'); 
-    	
-    	// setting values into b elements
-    	
-    	$("#budinfo li.pow b").text(pow);
-    	$("#budinfo li.pokoje b").text(pokoje);
-    	$("#budinfo li.pietro b").text(pietro);
-    	$("#budinfo li.cena b").text(cena);
-    	$("#budinfo li.brutto b").text(brutto);
-    	
-    	// info fade in
-    	$("#budinfo").fadeIn(300);
-    	
-    	
+        
+        //fade in
+        $(this).stop().animate({"opacity" : "1"}, 300);
+        
+        
+        // getting data attribute
+        var pow = $(this).data('pow');      
+        var pokoje = $(this).data('pokoje'); 
+        var pietro = $(this).data('pietro'); 
+        var cena = $(this).data('cena'); 
+        var brutto = $(this).data('brutto'); 
+        
+        // setting values into b elements
+        
+        $("#budinfo li.pow b").text(pow);
+        $("#budinfo li.pokoje b").text(pokoje);
+        $("#budinfo li.pietro b").text(pietro);
+        $("#budinfo li.cena b").text(cena);
+        $("#budinfo li.brutto b").text(brutto);
+        
+        // info fade in
+        $("#budinfo").fadeIn(300);
+        
+        
     }, function() {
     
-    	// fade out
-    	$(this).stop().animate({"opacity" : "0"}, 300);
-    	
-    	// info fade out
-    	$("#budinfo").fadeOut(300);
-    	
+        // fade out
+        $(this).stop().animate({"opacity" : "0"}, 300);
+        
+        // info fade out
+        $("#budinfo").fadeOut(300);
+        
     });
 
 });
@@ -174,13 +189,14 @@ var preloadImages = function(im) {
 var addToHash = function(lokal){
     lokal = lokal.substring(1);
     var urlHash = window.location.hash;
-    var hash = urlHash.split('-');
-    window.location.hash = hash[0] + '-' + lokal;
+    var hash = urlHash.split('_');
+console.log('lokal: ' + lokal + ', url: '+urlHash);
+    window.location.hash = hash[0] + '_' + lokal;
 }
 
 var removeFromHash = function(){
     var urlHash = window.location.hash;
-    var hash = urlHash.split('-');
+    var hash = urlHash.split('_');
     var pietro = hash[0];
     pietro = pietro.substring(1);
     window.location.hash = pietro;
@@ -255,14 +271,14 @@ var kp = {
                 }
                 
 
-                $('#plan-dialog .rzut').css({'height' : kp.windowH - 100 + 'px', 'width' : kp.windowW - panW +'px'});
+                $('#plan-dialog .rzut').css({'height' : kp.windowH - 150 + 'px', 'width' : kp.windowW - panW-60 +'px', 'line-height' : kp.windowH -150 + 'px'});
 
                 var panel = $('#plan-dialog .panel');
                 var panelH = panel.height();
                 if(panelH > (kp.windowH - 150)){
                     panel.css({'padding-top' : '0px'});
                 }else{
-                    panel.css({'padding-top' : (kp.windowH -150 - panelH)/2 + 'px', 'height' : '100%'});
+                    panel.css({'padding-top' : (kp.windowH -150 - panelH)/2 + 'px', 'height' : kp.windowH - 170 + 'px'});
                     //$('#plan-dialog .rzut').css({'margin-top' : (kp.windowH -150 - panelH)/2 + 'px'});
                 }
                     $('#showhide').css({'top' : (kp.windowH - 150 - 55)/2 + 'px'});
@@ -272,10 +288,13 @@ var kp = {
         },
         showDialog : function(el){
                         addToHash(el.attr('href'));
-                        if(kp.windowH > 550){
-                            $('body').css({'overflow' : 'hidden'});
+                        
+                        if(el.data('code') == ''){
+                            kp.kodMieszkania.hide();
+                        } else{
+                            kp.kodMieszkania.show();
+                            kp.kodMieszkania.empty().html(el.data('code'));
                         }
-                        kp.kodMieszkania.empty().html(el.data('code'));
                         
                         if(el.data('pow') == ''){
                             kp.powierzchniaM.parent().parent().hide();
@@ -309,8 +328,8 @@ var kp = {
                             kp.cenaBrutto.empty().html(el.data('brutto'));
                         }
 
-                        kp.widokImg.attr('src', 'img/' + el.data('widok') + '.jpg');
-                        kp.rzutImg.attr('src', 'img/' + el.data('rzut') + '.png');
+                        kp.widokImg.attr('src', el.data('widok'));
+                        kp.rzutImg.attr('src', el.data('rzut'));
                         kp.pdf.attr('href', el.data('pdf'));
                         kp.coordinates.attr('coords', el.data('coords'));
                         
@@ -330,9 +349,13 @@ var kp = {
                                 });
                                 $('#plan-dialog .karta').animate({'scale' : '1', 'opacity' : '1'}, {easing : 'easeInOutExpo', duration: 500});
                                 kp.setDims();
+                                if(kp.windowH > 550){
+                                   // $('body').css({'overflow' : 'hidden'});
+                    $('#plan-dialog').css({'position' : 'fixed'});
+                                }
                             });
                             
-				
+                
                         });
                     },
 
@@ -347,11 +370,11 @@ var kp = {
                     h = kp.windowH - 170;
                     kp.rzutW = h * kp.ratio;
                 }
-                var margin = (kp.windowW - 400 - kp.rzutW)/2;
+                var margin = (kp.windowW - 400 - 60 - kp.rzutW)/2;
                 if(margin<0){margin = 10;};
             kp.showHideButton.removeClass('hidden').addClass('shown');
             $('#plan-dialog .panel').animate({'right' : '30px'}, {easing : 'easeInOutExpo', duration: 500});
-            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 420 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
+            $('#plan-dialog .rzut').animate({'width' : kp.windowW - 480 + 'px'}, {easing : 'easeInOutExpo', duration: 500});
             kp.hiddenPanel = false;
         },
 
@@ -376,20 +399,20 @@ var kp = {
     };
 
 $(document).ready(function(){
+    //window.location.hash = window.location.hash;
     kp.cache = new Array();
     $('area.lokal').each(function(){
         var rzut = $(this).data('rzut');
-        var rzutToPush = 'img/' + rzut + '.png'; //nazwy plikow z rzutami
+        var rzutToPush = rzut; //nazwy plikow z rzutami
         var widok = $(this).data('widok');
-        var widokToPush = 'img/' + widok + '.jpg';// nazwy plikow z widokami
+        var widokToPush = widok;// nazwy plikow z widokami
         kp.cache.push(rzutToPush);
         kp.cache.push(widokToPush);
     });
     
+    
+
     preloadImages(kp.cache);
-    kp.cachedImg[0].onload=function(){
-    	//alert(this.width);
-    }
     kp.showHideButton = $('#plan-dialog a#showhide');
     kp.init();
     kp.planDialog = $('#plan-dialog');
@@ -404,7 +427,7 @@ $(document).ready(function(){
     kp.rzutImg = $('#plan-dialog .rzut img');
     kp.pdf = $('#plan-dialog .lokal-pdf');
     kp.coordinates = $('#plan-dialog map area');
-	
+    
     kp.cornerInfoContainer = $('#corner-info');
     kp.cornerInfoContainer.hide();
     kp.cornerNrMieszkania = $('#corner-info .nr-m');
@@ -413,9 +436,33 @@ $(document).ready(function(){
     kp.cornerPietro = $('#corner-info .pietro-l');
     kp.cornerCenaZaMetr = $('#corner-info .cena-l');
     kp.cornerCenaBrutto = $('#corner-info .brutto-l');
-	
     
-	
+    
+    var urlHash = window.location.hash;
+    if(urlHash != ''){
+        var hash = urlHash.split('_');
+        if(hash.length == 1){
+            var pietro = hash[0];
+            pietro = pietro.substring(1);
+            $('.bryla a').removeClass('current');
+            $('.bryla a[href="#' + pietro + '"]').addClass('current');
+            $('.budynek').hide();
+            $('.' + pietro).show();
+        }
+        if(hash.length == 2){
+            var pietro = hash[0];
+            pietro = pietro.substring(1);
+            var lokal = hash[1];
+        kp.showDialog($('area.lokal[href="#' + lokal + '"]'));
+            $('.bryla a').removeClass('current');
+            $('.bryla a[href="' + pietro + '"]').addClass('current');
+            $('.budynek').hide();
+            $('.' + pietro).show();
+            
+        }
+        
+        
+    }   
     
 
     $('area.lokal').mouseover(function(){
@@ -439,9 +486,10 @@ $(document).ready(function(){
                         complete: function(){
                             $('#plan-dialog').fadeOut(100);
                             $('body').css({'overflow' : 'auto'});
-                            kp.showPanel
-                            removeFromHash();                        }
-                    });
+                            kp.showPanel();
+                            removeFromHash();                        
+                            }
+    });
                 
    });
 
@@ -467,12 +515,51 @@ $(document).ready(function(){
         kp.cornerPietro.empty().html($(this).data('pietro'));
         kp.cornerCenaZaMetr.empty().html($(this).data('cena'));
         kp.cornerCenaBrutto.empty().html($(this).data('brutto'));
+        var el = $(this);
+
+        if(el.data('pow') == ''){
+            kp.cornerPowierzchniaM.parent().parent().hide();
+        }else{
+            kp.cornerPowierzchniaM.parent().parent().show();
+            kp.cornerPowierzchniaM.empty().html(el.data('pow'));
+        }
+
+        if(el.data('pokoje') == ''){
+            kp.cornerLiczbaPokoi.parent().parent().hide();
+        }else{
+            kp.cornerLiczbaPokoi.parent().parent().show();
+            kp.cornerLiczbaPokoi.empty().html(el.data('pokoje'));
+        }
+        if(el.data('pietro') == ''){
+            kp.cornerPietro.parent().parent().hide();
+        }else{
+            kp.cornerPietro.parent().parent().show();
+            kp.cornerPietro.empty().html(el.data('pietro'));
+        }
+        if(el.data('cena') == ''){
+            kp.cornerCenaZaMetr.parent().parent().hide();
+        }else{
+            kp.cornerCenaZaMetr.parent().parent().show();
+            kp.cornerCenaZaMetr.empty().html(el.data('cena'));
+        }
+        if(el.data('brutto') == ''){
+            kp.cornerCenaBrutto.parent().parent().hide();
+        }else{
+            kp.cornerCenaBrutto.parent().parent().show();
+            kp.cornerCenaBrutto.empty().html(el.data('brutto'));
+        }
         kp.cornerInfoContainer.fadeIn(100);
    });
 
    $('.budynek area').mouseout(function(){
         kp.cornerInfoContainer.fadeOut(100);     
    });
+
+$('area.lokal').bind('click', function(e){
+        e.preventDefault();
+        $('#plan-dialog .karta').animate({'scale' : '0.7', 'opacity' : '0'},10);
+        kp.showDialog($(this));      
+    });
 
 });
 
@@ -482,52 +569,4 @@ $(window).resize(function(){
 });
 
 $(window).load(function(){
-    window.location.hash = 'p1';
-    var urlHash = window.location.hash;
-    var path = window.location.pathname;
-    console.log(urlHash);
-    if(urlHash != ''){
-        var hash = urlHash.split('-');
-        if(hash.length == 1){
-            var pietro = hash[0];
-            pietro = pietro.substring(1);
-            $('.bryla a').removeClass('current');
-            $('.bryla a[href="#' + pietro + '"]').addClass('current');
-            $('.bud-bryla').hide();
-            $('#' + pietro).show();
-        }
-        if(hash.length == 2){
-            var pietro = hash[0];
-            pietro = pietro.substring(1);
-            var lokal = hash[1];
-            $('.bryla a').removeClass('current');
-            $('.bryla a[href="' + pietro + '"]').addClass('current');
-            $('.bud-bryla').hide();
-            $('#' + pietro).show();
-            kp.showDialog($('area.lokal[href="#' + lokal + '"]'))
-        }
-        
-    }
-
-    $('area.lokal').bind('click', function(e){
-        e.preventDefault();
-        $('#plan-dialog .karta').animate({'scale' : '0.7', 'opacity' : '0'},10);
-        kp.showDialog($(this)); 
-            
-    });
 });
-
-
-
-
-
-
-/*        //if(path.charAt(path.length-1) == '/' && /\d/.test(path.charAt(path.length-2))){
-            path = path.substring(0,path.length-2);
-            var rz = rzut.substring(rzut.length-1);
-            path = path + rz + '/';
-            //window.history.pushState(path, 'tytul', path);
-            History.pushState('blabla', "State 1", '/5');
-        //}
-
-        */

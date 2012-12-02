@@ -43,7 +43,7 @@ p.lead a {
 }
 
 .bryla .budynki.lower {
-	width: 110px;
+	width: 140px;
 	left: 10px; top: 20px;
 	text-transform: none;
 	font: normal 24px "ChartWell Bars", "futura-pt", Arial sans-serif;
@@ -171,7 +171,11 @@ p.lead a {
 
 .bryla ul.pietra li {
 	margin-bottom: 0px;
-	opacity: 0;
+-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
 }
 
 .karta {
@@ -199,14 +203,15 @@ p.lead a {
 .karta .rzut {
   float: left;
   text-align:center; 
+margin-left:20px;
+margin-top:35px;
   
 }
 
 .karta .rzut img {
 	max-height: 100%;
 	max-width:100%;
-	margin-left:auto;
-	margin-right:auto;
+	vertical-align:middle;
 }
 
 .karta .panel {
@@ -215,6 +220,7 @@ p.lead a {
   right: 30px;
   padding: 15px 0 15px 25px;
   width: 375px;
+min-height:500px;
 }
 
 .panel #showhide {
@@ -313,6 +319,7 @@ p.lead a {
 	min-width:1000px;
 	padding-bottom:50px;
 	position:relative;
+	min-height:100%;
 }
 
 .nr-lokalu{
@@ -321,4 +328,8 @@ p.lead a {
 	color:#fff;
 	font-size:27px;
 	display:none;
+}
+
+#corner-info{
+display:none;
 }

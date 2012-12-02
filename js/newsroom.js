@@ -1,3 +1,13 @@
+var Browser = {
+  Version: function() {
+    var version = 999; // we assume a sane browser
+    if (navigator.appVersion.indexOf("MSIE") != -1)
+      // bah, IE again, lets downgrade version number
+      version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+    return version;
+  }
+}
+
 var nr = {
 
 	init: function(){
@@ -7,8 +17,9 @@ var nr = {
 		nr.sliderHeight = $('.slideshow .slides').height();
 		nr.slideshowHeight = $(window).height() - 180;
 		
-		
-		
+		if (Browser.Version() == 8){
+			$('body').addClass('ie8');
+		}
 
 		nr.titleHolder = $('.title span');
 		var next = $('.slides .slide:first');
@@ -46,12 +57,12 @@ var nr = {
 							
 						
 					});*/
-					nr.hideImg();
+					
 					$('.slides #cover').fadeOut(800);
 				},
 
 	hideImg : function(){
-					$('.slideshow .slides .slide:not(:first)').fadeOut();
+					$('.slideshow .slides .slide:not(:first)').hide();
 				},
 
 	nextSlide : function(){
@@ -152,8 +163,9 @@ var nr = {
 $(document).ready(function(){
 
 	nr.init();
-	$('.slideshow .slides').prepend('<div id="cover"></div>');
 	
+	$('.slideshow .slides').prepend('<div id="cover"></div>');
+	nr.hideImg();
 
 	$('a.prevslide').bind('click', function(e){
 		e.preventDefault();
@@ -175,14 +187,18 @@ $(window).resize(function(){
 });
 
 $(window).load(function(){
-	$.when(function(){
+
+
+$('.slides #cover').fadeOut(800);
+	/*$.when(function(){
 		nr.imgHeight = $('.slide:first img').height();
 	}).done(function(){
 		//nr.setOnLoad();
+		
 		nr.setImages();
-		/*$('.slides #cover').fadeOut(800, function(){
+		$('.slides #cover').fadeOut(800, function(){
 			$(this).remove();
 			
-		});*/
-	})
+		});
+	})*/
 });
