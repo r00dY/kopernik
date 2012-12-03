@@ -29,7 +29,12 @@ $("document").ready(function() {
             sticky_navigation();
        });
     }
-	 
+    
+    
+    // FORCE SPAN AROUND EMAIL TEXT 
+     
+    $('.biuro .adres p:nth-child(2)').contents().filter(function(){return this.nodeType === 3}).wrap('<span />');
+    	 
 
 	// EQUAL COLUMNS
 	
