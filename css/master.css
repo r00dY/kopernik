@@ -966,6 +966,11 @@ width: 110px;
 	float: left;
 }
 
+.biuro .adres span {
+	float: left;
+	margin-right: 3px;
+}
+
 .biuro .adres dl {
 	overflow: hidden;
 }
