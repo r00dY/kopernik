@@ -1553,9 +1553,13 @@ footer p.copy {
 }
 
 footer p.credits {
-	width: 30%;
+	width: 23%;
 	float: right;
 	text-align: right;
+}
+
+footer p.credits span {
+	float: left;
 }
 
 footer p.credits a {
