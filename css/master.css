@@ -178,8 +178,6 @@ h1.logo a {
 
 nav {
 	margin: 0;
-	height: 100px;
-	padding: 25px 0 0;
 	font: normal 16px "futura-pt", sans-serif;
 	text-transform: uppercase;
 	float: left;
@@ -187,6 +185,7 @@ nav {
 	overflow: hidden;
 	z-index: 10;
 	background: #181818 url(../img/bg-body.png) 50% 0 repeat-y;
+	padding: 0 0 15px;
 }
 
 .noframe nav {
@@ -199,6 +198,7 @@ nav ul.mainnav {
 	position: relative;
 	left: 50%;
 	text-align: center;
+	padding: 25px 0 10px;
 }
 
 nav ul.mainnav li {
@@ -246,8 +246,8 @@ nav ul.subnav {
 	width: 840px;
 	border-bottom: 1px solid #212121;
 	border-top: 1px solid #212121;
-	margin: 40px auto -15px;
-	padding: 0 60px;
+	margin: 65px auto -10px;
+	padding: 0 60px 0;
 }
 
 nav ul.subnav li {
