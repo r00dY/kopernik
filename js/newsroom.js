@@ -24,7 +24,6 @@ var nr = {
 		nr.titleHolder = $('.title span');
 		var next = $('.slides .slide:first');
 		nr.setSlideTitle(next.find('img').attr('alt'));
-		//alert($('.slideshow .slide').length);
 		nr.titleDisplay = $('.title-display span');
 		nr.titleDisplay.empty().html($('.slides .slide:first').data('display'));
 		
@@ -45,19 +44,7 @@ var nr = {
 						});
 					},
 	setImages : function(){
-					nr.image = $('.slideshow .slides img');
-					nr.img = $('.slideshow .slides .slide');
-					//nr.image.css({'width' : nr.sliderWidth + 'px'});
-					nr.imgCollectionLength = nr.img.length;
-					/*$('.slideshow .slides .slide img').each(function(index, value){
-						console.log($(this).height());
-						if($(this).height()!= 0 && $(this).height() < nr.sliderHeight){
-							$(this).css({'margin-top' : (nr.sliderHeight - $(this).height())/2 + 'px'});
-						}
-							
-						
-					});*/
-					
+					nr.hideImg();
 					$('.slides #cover').fadeOut(800);
 				},
 
@@ -67,34 +54,17 @@ var nr = {
 
 	nextSlide : function(){
 					var next = $('.slides .slide:first');
-					
-					//nr.titleDisplay.empty().html(next.data('display'));
-
 					next.fadeOut(300, function(){
 						$(this).next().fadeIn();
 						nr.setSlideTitle($(this).next().find('img').attr('alt'));
 						nr.setDisplayTitle($(this).next().data('display'));
 						$('.slides .slide:last').after($(this));
-						
-						//$(this).fadeOut();
-					})
+				})
 					
 				},
 	prevSlide : function(){
-					//var cont = $('.slides .slide:last').css({'width' : '0px'});
-					//$('.slides').prepend(cont);
-					//nr.setImages();
 					var prev = $('.slides .slide:first');
 					var last = $('.slides .slide:last');
-					
-					
-					/*prev.animate({'width' : '100%'}, {
-						duration: nr.easingDuration,
-						easing : nr.easingEffect,
-						complete: function(){
-							
-						}
-					})*/
 
 					prev.fadeOut(300, function(){
 						prev.before(last);
@@ -188,17 +158,6 @@ $(window).resize(function(){
 
 $(window).load(function(){
 
+	$('.slides #cover').fadeOut(800);
 
-$('.slides #cover').fadeOut(800);
-	/*$.when(function(){
-		nr.imgHeight = $('.slide:first img').height();
-	}).done(function(){
-		//nr.setOnLoad();
-		
-		nr.setImages();
-		$('.slides #cover').fadeOut(800, function(){
-			$(this).remove();
-			
-		});
-	})*/
 });

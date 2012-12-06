@@ -25,20 +25,22 @@ $(function() {
         });
     });
 
-var Browser = {
-  Version: function() {
-    var version = 999; // we assume a sane browser
-    if (navigator.appVersion.indexOf("MSIE") != -1)
-      // bah, IE again, lets downgrade version number
-      version = parseFloat(navigator.appVersion.split("MSIE")[1]);
-    return version;
-  }
-}    
+    var Browser = {
+      Version: function() {
+        var version = 999;
+        if (navigator.appVersion.indexOf("MSIE") != -1)
+          version = parseFloat(navigator.appVersion.split("MSIE")[1]);
+        return version;
+      }
+    }    
 
-if (Browser.Version() == 8){
-            $('body').addClass('ie8');
-        }
+    if (Browser.Version() == 8){
+        $('body').addClass('ie8');
+    }
     
+    if(navigator.appName == 'Opera'){
+        $('body').addClass('opera');
+    }
 
     // MAP HIGHLIGHT
     
@@ -48,16 +50,12 @@ if (Browser.Version() == 8){
         fillOpacity: 0.6
     });
 
-    
-    $("img.widok-kondygnacji").maphilight({
-        stroke: false,
-        fillColor: 'c9825d',
-        fillOpacity: 0.6
-    });
-    
-    
-    
-    
+    $("area.rental").attr('data-maphilight','{"alwaysOn":false,"stroke":false, "fillColor" : "c9825d","fillOpacity": 0.6}');
+    $("area.reserved").attr('data-maphilight','{"alwaysOn":false,"stroke":false,"fillColor":"ff7800","fillOpacity": 0.6}');
+    $("area.sold").attr('data-maphilight','{"alwaysOn":true,"stroke":false, "fillColor":"282828","fillOpacity": 0.9}');
+    $('.widok-kondygnacji').maphilight();
+
+ 
     // MAP HOVER 
     
     $(".bud-bryla area").hover(function() {
@@ -69,13 +67,16 @@ if (Browser.Version() == 8){
     
 
     //$('body').addClass('ie8');
-    // DOCK EFFECT 
     
-    $( ".bryla .dock a" ).hover(function() {
-        $(this).addClass( "hover", 500);
-    }, function() {
-        $(this).removeClass( "hover", 500);
-    });
+    // DOCK EFFECT 
+     if(!$('body').hasClass('opera')){
+        $( ".bryla .dock a" ).hover(function() {
+            $(this).addClass( "hover", 500);
+        }, function() {
+            $(this).removeClass( "hover", 500);
+        });
+     }
+    
     
     
     $( ".bryla .dock a" ).click(function() {
@@ -83,14 +84,8 @@ if (Browser.Version() == 8){
         $(this).addClass("current");
         return false;
     });
-    
-    var jqDockOpts = {align: 'left', duration: 200, labels: 'tc', size: 90, distance: 85};  
-    $('.dock').jqDock(jqDockOpts);
 
     // KONDYGNACJE
-    
-    //$(".bryla .rzut:not(:first)").hide();
-    //$('.budynek:not(:first)').hide();
     
     $( ".bryla .dock a" ).click(function(e) {
         e.preventDefault();
@@ -99,11 +94,7 @@ if (Browser.Version() == 8){
         changeHash(rzut);
         $(".bryla .rzut").fadeOut(300);
         $(".bryla ." + rzut ).fadeIn(300, function(){
-            $("img.widok-kondygnacji").maphilight({
-                stroke: false,
-                fillColor: 'c9825d',
-                fillOpacity: 0.6
-            });
+            $('.widok-kondygnacji').maphilight();
         });
         
     });
@@ -133,24 +124,19 @@ if (Browser.Version() == 8){
     $(".budynek a.lokal").hover(function() {
         
         //fade in
-        $(this).stop().animate({"opacity" : "1"}, 300);
-        
-        
+        $(this).stop().animate({"opacity" : "1"}, 300);     
         // getting data attribute
         var pow = $(this).data('pow');      
         var pokoje = $(this).data('pokoje'); 
         var pietro = $(this).data('pietro'); 
         var cena = $(this).data('cena'); 
-        var brutto = $(this).data('brutto'); 
-        
-        // setting values into b elements
-        
+        var brutto = $(this).data('brutto');    
+        // setting values into b elements   
         $("#budinfo li.pow b").text(pow);
         $("#budinfo li.pokoje b").text(pokoje);
         $("#budinfo li.pietro b").text(pietro);
         $("#budinfo li.cena b").text(cena);
-        $("#budinfo li.brutto b").text(brutto);
-        
+        $("#budinfo li.brutto b").text(brutto);  
         // info fade in
         $("#budinfo").fadeIn(300);
         
@@ -158,24 +144,22 @@ if (Browser.Version() == 8){
     }, function() {
     
         // fade out
-        $(this).stop().animate({"opacity" : "0"}, 300);
-        
+        $(this).stop().animate({"opacity" : "0"}, 300); 
         // info fade out
-        $("#budinfo").fadeOut(300);
-        
+        $("#budinfo").fadeOut(300); 
     });
 
 });
 
 
-var preloadImages = function(im) {
-    kp.cachedImg = new Array();
-    var args_len = im.length;
-    for (var i = args_len; i--;) {
-        kp.cachedImg[i] = new Image();
-        kp.cachedImg[i].src = im[i];  
-    }
-  };
+    var preloadImages = function(im) {
+        kp.cachedImg = new Array();
+        var args_len = im.length;
+        for (var i = args_len; i--;) {
+            kp.cachedImg[i] = new Image();
+            kp.cachedImg[i].src = im[i];  
+        }
+    };
 
   var getDocHeight = function() {
     var D = document;
@@ -186,26 +170,26 @@ var preloadImages = function(im) {
         );
     }   
 
-var addToHash = function(lokal){
-    lokal = lokal.substring(1);
-    var urlHash = window.location.hash;
-    var hash = urlHash.split('_');
-console.log('lokal: ' + lokal + ', url: '+urlHash);
-    window.location.hash = hash[0] + '_' + lokal;
-}
+    var addToHash = function(lokal){
+        lokal = lokal.substring(1);
+        var urlHash = window.location.hash;
+        var hash = urlHash.split('_');
+        console.log('lokal: ' + lokal + ', url: '+urlHash);
+        window.location.hash = hash[0] + '_' + lokal;
+    }
 
-var removeFromHash = function(){
-    var urlHash = window.location.hash;
-    var hash = urlHash.split('_');
-    var pietro = hash[0];
-    pietro = pietro.substring(1);
-    window.location.hash = pietro;
-}
+    var removeFromHash = function(){
+        var urlHash = window.location.hash;
+        var hash = urlHash.split('_');
+        var pietro = hash[0];
+        pietro = pietro.substring(1);
+        window.location.hash = pietro;
+    }
 
-var changeHash = function(floor){
-    console.log(floor);
-    window.location.hash = floor;
-}
+    var changeHash = function(floor){
+        console.log(floor);
+        window.location.hash = floor;
+    }
 
 var kp = {
 
@@ -278,7 +262,7 @@ var kp = {
                 if(panelH > (kp.windowH - 150)){
                     panel.css({'padding-top' : '0px'});
                 }else{
-                    panel.css({'padding-top' : (kp.windowH -150 - panelH)/2 + 'px', 'height' : kp.windowH - 200 + 'px'});
+                    panel.css({'padding-top' : (kp.windowH -150 - panelH)/2 + 'px', 'height' : kp.windowH - 160 + 'px'});
                     //$('#plan-dialog .rzut').css({'margin-top' : (kp.windowH -150 - panelH)/2 + 'px'});
                 }
                     $('#showhide').css({'top' : (kp.windowH - 150 - 55)/2 + 'px'});
