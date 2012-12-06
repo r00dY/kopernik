@@ -178,7 +178,6 @@ h1.logo a {
 
 nav {
 	margin: 0;
-	padding: 25px 0 25px;
 	font: normal 16px "futura-pt", sans-serif;
 	text-transform: uppercase;
 	float: left;
@@ -186,6 +185,7 @@ nav {
 	overflow: hidden;
 	z-index: 10;
 	background: #181818 url(../img/bg-body.png) 50% 0 repeat-y;
+	padding: 0 0 15px;
 }
 
 .noframe nav {
@@ -198,6 +198,7 @@ nav ul.mainnav {
 	position: relative;
 	left: 50%;
 	text-align: center;
+	padding: 25px 0 10px;
 }
 
 nav ul.mainnav li {
@@ -245,8 +246,8 @@ nav ul.subnav {
 	width: 840px;
 	border-bottom: 1px solid #212121;
 	border-top: 1px solid #212121;
-	margin: 40px auto -15px;
-	padding: 0 60px;
+	margin: 65px auto -10px;
+	padding: 0 60px 0;
 }
 
 nav ul.subnav li {
@@ -965,6 +966,11 @@ width: 110px;
 	float: left;
 }
 
+.biuro .adres span {
+	float: left;
+	margin-right: 3px;
+}
+
 .biuro .adres dl {
 	overflow: hidden;
 }
@@ -1081,19 +1087,23 @@ form.contact .select .dropdown {
 }
 
 form.contact .select .dropdown label {
-	width: 246px;
+	width: 226px;
 	display: block;
 	color: #c0c0c0;
 	position: relative;
 	text-align: left;
-	padding: none;
 	line-height: 35px;
 	cursor: pointer;
-	padding: 0 10px;
+	padding: 0 10px 0 30px;
 }
 
 form.contact .select .dropdown label:hover {
 	background-color: #222222;
+}
+
+form.contact .select .dropdown label div.checker {
+	position: absolute;
+	top: 1px; left: 10px;
 }
 
 form.contact .cols .col .row input[type=text] {
@@ -1548,9 +1558,13 @@ footer p.copy {
 }
 
 footer p.credits {
-	width: 30%;
+	width: 23%;
 	float: right;
 	text-align: right;
+}
+
+footer p.credits span {
+	float: left;
 }
 
 footer p.credits a {
@@ -1558,7 +1572,7 @@ footer p.credits a {
 	text-decoration: none;
 	display: inline-block;
 	position: relative;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 footer p.credits .underline {
