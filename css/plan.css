@@ -17,6 +17,10 @@
 	min-height: 790px;
 }
 
+.content.radial.osiedle {
+	background: url(../img/plankompleksu.jpg) 0 0 no-repeat;
+}
+
 .push {
 	margin-bottom: 70px !important;
 }
@@ -33,6 +37,32 @@ p.lead a {
 
 .bryla {
 	position: relative;
+}
+
+.bryla.osiedle {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.bryla.osiedle a.neptun {
+	display: block;
+	width: 160px;
+	height: 132px;
+	background: url(../img/neptun-overlay.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 134px;
+	left: 318px;
+	opacity: 0;
+}
+
+.bryla.osiedle a.neptun:hover {
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+	opacity: 1;
 }
 
 .bryla .budynki {
