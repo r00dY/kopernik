@@ -56,7 +56,46 @@ p.lead a {
 	opacity: 0;
 }
 
-.bryla.osiedle a.neptun:hover {
+.bryla.osiedle a.saturn {
+	display: block;
+	width: 200px;
+	height: 196px;
+	background: url(../img/overlay-saturn.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 1px;
+	left: 50px;
+	opacity: 0;
+}
+
+.bryla.osiedle a.merkury {
+	display: block;
+	width: 163px;
+	height: 283px;
+	background: url(../img/overlay-merkury.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 227px;
+	left: 50px;
+	opacity: 0;
+}
+
+.bryla.osiedle a.jowisz {
+	display: block;
+	width: 260px;
+	height: 174px;
+	background: url(../img/overlay-jowisz.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 298px;
+	left: 247px;
+	opacity: 0;
+}
+
+.bryla.osiedle a.neptun:hover,
+.bryla.osiedle a.jowisz:hover,
+.bryla.osiedle a.merkury:hover,
+.bryla.osiedle a.saturn:hover {
 	-webkit-transition: all .3s ease;
 	-moz-transition: all .3s ease;
 	-ms-transition: all .3s ease;
