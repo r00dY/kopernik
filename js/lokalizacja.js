@@ -146,7 +146,7 @@
 				mapTypeControlOptions: {
 					mapTypeIds: [ 'Styled']
 				},
-				center: new google.maps.LatLng(53.781166, 20.48019),
+				center: new google.maps.LatLng(53.781066, 20.48019),
 				zoom: 15,
 				mapTypeId: 'Styled',
 				disableDefaultUI: true
@@ -189,8 +189,8 @@
 			var styledMapType = new google.maps.StyledMapType(styles, { name: 'Styled' });
 			map.mapTypes.set('Styled', styledMapType);
 			
-			var markerLatLng = new google.maps.LatLng(53.781, 20.483);
-			var image = '../workspace/img/pinezka.png';	
+			var markerLatLng = new google.maps.LatLng(53.781066, 20.48019);
+			var image = '../workspace/img/pinezka2.png';	
 			var marker = new google.maps.Marker({
 			      position: markerLatLng,
 			      map: map,
