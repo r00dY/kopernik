@@ -17,6 +17,10 @@
 	min-height: 790px;
 }
 
+.content.radial.osiedle {
+	background: url(../img/plankompleksu.jpg) 0 0 no-repeat;
+}
+
 .push {
 	margin-bottom: 70px !important;
 }
@@ -33,6 +37,81 @@ p.lead a {
 
 .bryla {
 	position: relative;
+}
+
+.bryla.osiedle {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.bryla.osiedle a.neptun {
+	display: block;
+	width: 160px;
+	height: 132px;
+	background: url(../img/neptun-overlay.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 134px;
+	left: 318px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+
+.bryla.osiedle a.saturn {
+	display: block;
+	width: 200px;
+	height: 196px;
+	background: url(../img/overlay-saturn.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 1px;
+	left: 50px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+
+.bryla.osiedle a.merkury {
+	display: block;
+	width: 163px;
+	height: 283px;
+	background: url(../img/overlay-merkury.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 227px;
+	left: 50px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+
+.bryla.osiedle a.jowisz {
+	display: block;
+	width: 260px;
+	height: 174px;
+	background: url(../img/overlay-jowisz.png) 0 0 no-repeat;
+	text-indent: -9999px;
+	position: absolute;
+	top: 298px;
+	left: 247px;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+}
+
+.bryla.osiedle a.neptun:hover,
+.bryla.osiedle a.jowisz:hover,
+.bryla.osiedle a.merkury:hover,
+.bryla.osiedle a.saturn:hover {
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
 }
 
 .bryla .budynki {
