@@ -46,13 +46,13 @@ $(function() {
     
     $("img#bryla").maphilight({
         stroke: false,
-        fillColor: 'c9825d',
+        fillColor: 'C9825D',
         fillOpacity: 0.6
     });
 
-    $("area.rental").attr('data-maphilight','{"alwaysOn":false,"stroke":false, "fillColor" : "c9825d","fillOpacity": 0.6}');
+    $("area.rental").attr('data-maphilight','{"alwaysOn":false,"stroke":false, "fillColor" : "10482f","fillOpacity": 0.6}');
     $("area.reserved").attr('data-maphilight','{"alwaysOn":false,"stroke":false,"fillColor":"ff7800","fillOpacity": 0.6}');
-    $("area.sold").attr('data-maphilight','{"alwaysOn":true,"stroke":false, "fillColor":"282828","fillOpacity": 0.9}');
+    $("area.sold").attr('data-maphilight','{"alwaysOn":true,"stroke":false, "fillColor":"171717","fillOpacity": 0.9}');
     $('.widok-kondygnacji').maphilight();
 
  
@@ -87,6 +87,26 @@ $(function() {
 
     // KONDYGNACJE
     
+    if($('.bud-bryla').length > 0){
+        var urlHash = window.location.hash;
+        if(urlHash != ''){
+
+                $('#bryla-list a').removeClass('current');
+                $('#bryla-list a[href="' + urlHash + '"]').addClass('current');
+                var rzut = urlHash.substring(1);
+                $(".bud-bryla").fadeOut(50);
+                $("#" + rzut ).fadeIn(50, function(){
+                    $("img#bryla").maphilight({
+                        stroke: false,
+                        fillColor: 'C9825D',
+                        fillOpacity: 0.6
+                    });
+                });
+
+
+        }
+    }
+
     $( ".bryla .dock a" ).click(function(e) {
         e.preventDefault();
         var rzut = $(this).attr('href');
@@ -96,8 +116,10 @@ $(function() {
         $(".bryla ." + rzut ).fadeIn(300, function(){
             $('.widok-kondygnacji').maphilight();
         });
+        console.log('wcisnieto');
         
     });
+
 
 
 
@@ -109,10 +131,10 @@ $(function() {
         $(this).addClass('current');
         rzut = rzut.substring(1, rzut.length);
         $(".bud-bryla").fadeOut(300);
-        $("#" + rzut ).delay(300).fadeIn(300, function(){
+        $("#" + rzut ).fadeIn(300, function(){
             $("img#bryla").maphilight({
                 stroke: false,
-                fillColor: 'c9825d',
+                fillColor: 'C9825D',
                 fillOpacity: 0.6
             });
         });
@@ -327,7 +349,7 @@ var kp = {
                                 $("img#widok").maphilight({
                                     stroke: false,
                                     alwaysOn: true,
-                                    fillColor: 'c9825d',
+                                    fillColor: 'C9825D',
                                     fillOpacity: 0.8
                                 });
                                 $('#plan-dialog .karta').animate({'scale' : '1', 'opacity' : '1'}, {easing : 'easeInOutExpo', duration: 500});
@@ -381,6 +403,7 @@ var kp = {
     };
 
 $(document).ready(function(){
+    $('html, body').animate({ scrollTop: 0 }, 0);
     kp.cache = new Array();
     $('area.lokal').each(function(){
         var rzut = $(this).data('rzut');
@@ -500,10 +523,14 @@ $(document).ready(function(){
         kp.cornerInfoContainer.fadeOut(100);     
    });
 
-$('area.lokal').bind('click', function(e){
+$('area.rental, area.reserved').bind('click', function(e){
         e.preventDefault();
         $('#plan-dialog .karta').animate({'scale' : '0.7', 'opacity' : '0'},10);
         kp.showDialog($(this));      
+    });
+
+$('area.sold').bind('click', function(e){
+        e.preventDefault();    
     });
 
 });
@@ -514,28 +541,31 @@ $(window).resize(function(){
 });
 
 $(window).load(function(){
+    $('html, body').animate({ scrollTop: 0 }, 0);
     var urlHash = window.location.hash;
-    if(urlHash != ''){
-        var hash = urlHash.split('_');
-        if(hash.length == 1){
-            var pietro = hash[0];
-            pietro = pietro.substring(1);
+    if($('.bud-bryla').length == 0){
+        if(urlHash != ''){
+            var hash = urlHash.split('_');
+            if(hash.length == 1){
+                var pietro = hash[0];
+                pietro = pietro.substring(1);
 
-            $('.bryla a').removeClass('current');
-            $('.bryla a[href="#' + pietro + '"]').addClass('current');
-            $('.budynek').hide();
-            $('.' + pietro).show();
+                $('.bryla a').removeClass('current');
+                $('.bryla a[href="#' + pietro + '"]').addClass('current');
+                $('.budynek').hide();
+                $('.' + pietro).show();
+            }
+            if(hash.length == 2){
+                var pietro = hash[0];
+                pietro = pietro.substring(1);
+                var lokal = hash[1];
+                lokal = lokal.substring(1);
+                kp.showDialog($('area.lokal[title="' + lokal + '"]'));
+                $('.bryla a').removeClass('current');
+                $('.bryla a[href="#' + pietro + '"]').addClass('current');
+                $('.budynek').hide();
+                $('.' + pietro).show();  
+            }  
         }
-        if(hash.length == 2){
-            var pietro = hash[0];
-            pietro = pietro.substring(1);
-            var lokal = hash[1];
-            lokal = lokal.substring(1);
-            kp.showDialog($('area.lokal[title="' + lokal + '"]'));
-            $('.bryla a').removeClass('current');
-            $('.bryla a[href="#' + pietro + '"]').addClass('current');
-            $('.budynek').hide();
-            $('.' + pietro).show();  
-        }  
-    }   
+    }
 });
