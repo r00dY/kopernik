@@ -39,8 +39,7 @@ body.noframe {
 .container {
 	width: 960px;
 	margin: 0 auto;
-	padding: 0 70px;
-	overflow: hidden;
+	padding: 0;
 }
 
 .container.full {
