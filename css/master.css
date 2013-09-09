@@ -1662,3 +1662,66 @@ footer p.credits .underline {
 
 
 .ie8 * { opacity: inherit; filter: inherit; }
+
+
+
+
+/* NOWA STRONA GŁÓWNA
+------------------------------------------------------------- */
+
+#feature {
+	width: 100%;
+	min-height: 600px;
+	max-height: 800px;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 80px;
+}
+
+#feature img {
+	width: 100%;
+	vertical-align: middle;
+}
+
+ul.features {
+	height: 130px;
+	width: 960px;
+	position: absolute;
+	z-index: 100;
+	top: 50%; left: 50%;
+	margin-top: -90px;
+	margin-left: -480px;
+}
+
+ul.features li {
+	float: left;
+	margin: 0 5px 0 0;
+	font: normal 11px/16px Arial, sans-serif;
+}
+
+ul.features li:last-child {
+	margin: 0;
+}
+
+ul.features h5 {
+	text-transform: uppercase;
+	font: normal 15px "futura-pt", sans-serif;
+	line-height: 1.5em;
+	margin-bottom: 15px;
+}
+
+ul.features a {
+	display: block;
+	width: 138px;
+	height: 130px;
+	padding: 25px;
+	color: #352e27;
+	text-decoration: none;
+	background-color: rgba(218,207,186,0.9);
+}
+
+ul.features a:hover {
+	background-color: #c99463;
+	color: #fff;
+}
+
