@@ -1,0 +1,305 @@
+<!DOCTYPE html> 
+
+<html lang="en"> 
+<head> 
+
+	<meta charset="utf-8" /> 
+	
+	<title>Kopernik Park</title> 
+	 
+	<link rel="stylesheet" href="css/master.css" />
+	<link rel="stylesheet" href="css/plan.css" />
+	<link rel="stylesheet" href="css/uniform.default.css" />
+	<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.10.3.custom.min.css">
+	
+	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+	<script src="js/jquery.easing.1.3.js"></script>
+	<script src="js/jquery.validate.min.js"></script>
+	<script src="js/jquery.form.js"></script>
+	<script src="js/jquery.cycle.all.js"></script>
+	<script src="js/jquery.uniform.min.js"></script>
+	<script type="text/javascript" src="//use.typekit.net/mab2wwk.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	<script src="js/jquery.maphilight.min.js"></script>
+
+	<script src="js/jquery-ui-1.10.3.custom.min.js"></script>
+
+	<script src="js/scripts.js"></script>
+	<script src="js/plan.js"></script>
+
+
+
+
+	<!--[if lte IE 8]>
+	<script src="js/selectivizr.js"></script>
+	<![endif]-->
+	
+	<!--[if lte IE 7]>
+	<link rel="stylesheet" href="css/ie.css" />
+	<![endif]-->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36052718-1']);
+  _gaq.push(['_setDomainName', 'kopernikpark.pl']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	
+</head>
+	
+<body>
+
+	<div class="container group">
+	
+		<header>
+			<h1 class="logo"><a href="/">Kopernik Park</a></h1>
+			<nav>
+				<ul class="mainnav group">
+					<li><a href="/" title="Strona Główna" class="roll current">Strona Główna</a></li>
+					<li><a href="wizja" title="Inwestycja" class=" roll">Inwestycja</a></li>
+					<li><a href="lokalizacja" title="Lokalizacja" class="roll">Lokalizacja</a></li>
+					<li><a href="wizualizacje" title="Wizualizacje" class="roll">Wizualizacje</a></li>
+					<li><a href="biznes-w-centrum" title="Biznes" class="roll">Biznes</a></li>
+					<li><a href="kontakt" title="Kontakt" class="roll">Kontakt</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<div class="content nosub group">
+			
+			<h2>Wyszukiwarka</h2>
+			
+			<div class="tabela-tabs group">
+				
+				<ul class="taby">
+					<li class="current"><a href="#tab-miesz">Mieszkania</a></li>
+					<li><a href="#">Lokale użytkowe</a></li>
+				</ul>
+
+				<div class="tabela-wrapper" id="tab-miesz">
+
+					<div class="tabela-form group">
+
+						<form action="#" class="group">
+							<fieldset class="group">
+								<h5>Powierzchnia [m<sup>2</sup>]</h5>
+								<div id="slider-range"></div>
+								<label for="dostepne"><input type="checkbox" value="dostepne" id="dostepne">Tylko dostepne</label>
+							</fieldset>
+
+							<fieldset class="group">
+								<div>
+									<h5>Liczba pokoi</h5>
+									<div class="select">dowolna
+										<ul class="dropdown">
+											<li><label for="jeden"><input type="checkbox" id="jeden" value="1"> 1</label></li>
+											<li><label for="dwa"><input type="checkbox" id="dwa" value="2"> 2</label></li>
+											<li><label for="trzy"><input type="checkbox" id="trzy" value="3"> 3</label></li>
+										</ul>
+									</div><!-- /select -->
+								</div>
+								<div>
+									<h5>Budynek</h5>
+									<div class="select">dowolny
+										<ul class="dropdown">
+											<li><label for="jowisz"><input type="checkbox" id="jowisz" value="1"> Jowisz</label></li>
+											<li><label for="saturn"><input type="checkbox" id="saturn" value="2"> Saturn</label></li>
+											<li><label for="merkury"><input type="checkbox" id="merkury" value="3"> Merkury</label></li>
+										</ul>
+									</div><!-- /select -->
+								</div>
+								<div>
+									<h5>Piętro</h5>
+									<div class="select">dowolne
+										<ul class="dropdown">
+											<li><label for="p-jeden"><input type="checkbox" id="p-jeden" value="1"> 1</label></li>
+											<li><label for="p-dwa"><input type="checkbox" id="p-dwa" value="2"> 2</label></li>
+											<li><label for="p-trzy"><input type="checkbox" id="p-trzy" value="3"> 3</label></li>
+										</ul>
+									</div><!-- /select -->
+								</div>
+
+								<ul class="cechy group">
+									<li><label for="widok"><input type="checkbox">Widok na panoramę Olsztyna</label></li>
+									<li><label for="projekt"><input type="checkbox">Mieszkanie z projektem wnętrza</label></li>
+									<li><label for="taras"><input type="checkbox">Przestronny taras</label></li>
+									<li><label for="oferta"><input type="checkbox"><a href="#">Oferta specjalna</a></label></li>
+								</ul>
+
+							</fieldset>
+
+							<fieldset>
+								<button class="form-clear">Wyczyść</button>
+								<button class="form-search">Szukaj</button>
+							</fieldset>
+
+
+						</form>
+						
+						
+
+					</div><!-- /tabela-form -->
+
+					<table class="sresults">
+						<thead>
+							<tr>
+								<th>Numer mieszkania</th>
+								<th>Budynek</th>
+								<th>Piętro</th>
+								<th>Powierzchnia [m<sup>2</sup>]</th>
+								<th>Liczba pokoi</th>
+								<th>Cechy</th>
+								<th>Symbol</th>
+								<th>Plan mieszkania</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span><span class="ikonka oferta" title="Oferta specjalna">Oferta specjalna</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="rezerwacja">Rezerwacja</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="sprzedane">Sprzedane</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span><span class="ikonka oferta" title="Oferta specjalna">Oferta specjalna</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="rezerwacja">Rezerwacja</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span><span class="ikonka oferta" title="Oferta specjalna">Oferta specjalna</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="rezerwacja">Rezerwacja</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="sprzedane">Sprzedane</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="sprzedane">Sprzedane</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span><span class="ikonka oferta" title="Oferta specjalna">Oferta specjalna</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="wolne"><a href="#">Zobacz plan</a></span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="rezerwacja">Rezerwacja</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="rezerwacja">Rezerwacja</span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="wolne"><a href="#">Zobacz plan</a></span></td>
+							</tr>
+							<tr>
+								<td class="numer">55</td>
+								<td>Jowisz</td>
+								<td>Parter</td>
+								<td class="area">65,8</td>
+								<td>3</td>
+								<td class="cechy"><span class="ikonka taras" title="Przestronny taras">Przestronny taras</span><span class="ikonka widok" title="Widok na panoramę Olsztyna">Widok na panoramę Olsztyna</span><span class="ikonka projekt" title="Mieszkanie z projektem wnętrza">Mieszkanie z projektem wnętrza</span></td>
+								<td>D2/1/M2/12</td>
+								<td><span class="rezerwacja">Rezerwacja</span></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="tabela-strony">
+						<a href="#" class="current">1</a>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+						<a href="#" class="next">Następna ></a>
+					</div>
+					
+				</div><!-- /tabela-wrapper -->
+
+			</div><!-- /tabela-tabs -->
+			
+								
+		</div><!-- /content -->
+		
+		<footer class="bottom">
+			<p class="copy">&copy; 2012 Kopernik Park. Wszelkie prawa zastrzeżone</p>
+			<p class="credits">Projekt i realizacja: <a href="http://mnogal.pl" target="_blank">NOGAL+PARTNERS<span class="underline"></span></a></p>
+			<a href="http://www.opb.com.pl/" id="opb" target="_blank">Generalny wykonawca: OPB Development</a>
+		</footer>
+	
+	</div><!-- /container -->
+	
+</body>	
+	
+</html>

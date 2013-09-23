@@ -350,6 +350,37 @@ $("document").ready(function() {
 	        container.find(".dropdown").slideUp(300);
 	    }
 	});
+
+
+	// TABELA WYSZIKIWANIA MIESZKAN
+
+	$(document).ready(function() {
+		$(".tabela-form input[type=checkbox]").uniform(); 
+	});
+
+	$(".tabela-form .select").click(function() {
+		$(this).find(".dropdown").slideDown(300);
+	});
+	
+	$(document).mouseup(function (e) {
+	    var container = $(".tabela-form .select");
+	
+	    if (!container.is(e.target) && container.has(e.target).length === 0) {
+	        container.find(".dropdown").slideUp(300);
+	    }
+	});
+
+
+	$( "#slider-range" ).slider({
+      range: true,
+      min: 30,
+      max: 90,
+      values: [ 30, 60 ],
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+      }
+    });
+
 		
 
 	// CONTACT FORM VALIDATION
