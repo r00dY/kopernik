@@ -1077,7 +1077,7 @@ form.contact .select {
 	cursor: pointer;
 }
 
-form.contact .select .dropdown, {
+form.contact .select .dropdown {
 	display: none;
 	position: absolute;
 	top: 35px; left: -1px;
