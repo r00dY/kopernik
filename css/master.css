@@ -39,7 +39,8 @@ body.noframe {
 .container {
 	width: 960px;
 	margin: 0 auto;
-	padding: 0;
+	padding: 0 70px;
+	overflow: hidden;
 }
 
 .container.full {
@@ -124,7 +125,7 @@ span.faded {
 }
 
 h2 {
-	font: normal 36px "futura-pt", sans-serif;
+	font: normal 36px "Century Gothic W01", sans-serif;
 	text-transform: uppercase;
 	color: #c9825d;
 	text-align: center;
@@ -134,7 +135,7 @@ h2 {
 }
 
 h3 {
-	font: normal 18px "futura-pt", sans-serif;
+	font: normal 18px "Century Gothic W01", sans-serif;
 	text-transform: uppercase;
 	color: #c9825d;
 	margin: 0 0 10px;
@@ -177,7 +178,7 @@ h1.logo a {
 
 nav {
 	margin: 0;
-	font: normal 16px "futura-pt", sans-serif;
+	font: normal 16px "Century Gothic W01", sans-serif;
 	text-transform: uppercase;
 	float: left;
 	width: 100%;
@@ -202,7 +203,7 @@ nav ul.mainnav {
 
 nav ul.mainnav li {
 	float: left;
-	padding: 0 32px;
+	padding: 0 25px;
 	background: url(../img/bg-navitem.png) 100% 4px no-repeat;
 	overflow: hidden;
 	display: block;
@@ -346,7 +347,7 @@ a#playpause {
 	padding: 0 25px 0 0;
 	height:22px;
 	line-height:24px;
-	font: normal 16px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 16px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	color: #fff;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -435,7 +436,7 @@ a#playpause {
 	display: block;
 	margin: 0 auto;
 	width: 100px;
-	font: normal 20px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 20px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	text-decoration: none;
 	background: url(../img/arrow-link.png) 95% 50% no-repeat;
 }
@@ -495,7 +496,7 @@ a#playpause {
 	display: block;
 	margin: 0 auto;
 	width: 100px;
-	font: normal 20px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 20px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	text-decoration: none;
 	background: url(../img/arrow-link.png) 95% 50% no-repeat;
 }
@@ -619,7 +620,7 @@ a#playpause {
 
 .lokalizacja div.descr .tool {
 	display: block;
-	font: normal 24px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 24px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	color: #868686;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -781,7 +782,7 @@ width: 110px;
 
 .news-feature h3 {
 	color: #c9825d;
-	font: normal 30px/34px "futura-pt", sans-serif;
+	font: normal 30px/34px "Century Gothic W01", sans-serif;
 	text-transform: uppercase;
 	background: url(../img/bg-newstitle.png) 0 0 no-repeat;
 	margin: 20px 0 15px;
@@ -836,7 +837,7 @@ width: 110px;
 
 .news-item .meta h4 {
 	color: #c9825d;
-	font: normal 20px/24px "futura-pt", sans-serif;
+	font: normal 20px/24px "Century Gothic W01", sans-serif;
 	text-transform: uppercase;
 	background: url(../img/bg-newstitle.png) 0 0 no-repeat;
 	margin: 20px 0 15px;
@@ -863,7 +864,7 @@ width: 110px;
 .news-grid .news-more {
 	display: block;
 	clear: both;
-	font: normal 18px "futura-pt", Arial sans-serif;
+	font: normal 18px "Century Gothic W01", Arial sans-serif;
 	color: #b0aba1;
 	text-transform: uppercase;
 	letter-spacing: 4px;
@@ -902,7 +903,7 @@ width: 110px;
 }
 
 .mieszkania dl dt {
-	font: normal 26px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 26px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	color: #c9825d;
 	padding: 10px 0 0;
 }
@@ -925,7 +926,7 @@ width: 110px;
 	float: left;
 	margin: 0 22px 0 0;
 	padding: 15px;
-	font: normal 20px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 20px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	line-height: 28px;
 	color: #adadad;
 	text-decoration: none;
@@ -1468,7 +1469,7 @@ top: 50%;
 
 h1.newsroom-title{
 	text-align:center;
-	font-family:"futura-pt",sans-serif;
+	font-family:"Century Gothic W01",sans-serif;
 	font-size:20px;
 	text-transform:uppercase;
 	font-weight:100;
@@ -1516,7 +1517,7 @@ h1.newsroom-title{
 }
 
 .slideshow .tools a.pause {
-	font: normal 16px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 16px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	color: #fff;
 	text-decoration: none;
 	position: relative;
@@ -1525,7 +1526,7 @@ h1.newsroom-title{
 
 .slideshow .tools a.pokaz {
 	position: relative;
-	font: normal 16px "ChartWell Bars", "futura-pt", Arial sans-serif;
+	font: normal 16px "ChartWell Bars", "Century Gothic W01", Arial sans-serif;
 	color: #fff;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -1562,11 +1563,11 @@ footer p.credits {
 	text-align: right;
 }
 
-footer p.credits span {
+footer p.credits span, footer p.copy span {
 	float: left;
 }
 
-footer p.credits a {
+footer p.credits a, footer p.copy a  {
 	color: #9d9d9d;
 	text-decoration: none;
 	display: inline-block;
@@ -1574,13 +1575,15 @@ footer p.credits a {
 	overflow-x: hidden;
 }
 
-footer p.credits .underline {
+footer p.credits .underline, footer p.copy .underline {
   position: absolute;
   width: 100%;
   border-top: 1px solid #9d9d9d;
   left: -100%;
   bottom: 2px;
 }
+
+
 
 #opb,
 #opb2 {
@@ -1663,67 +1666,65 @@ footer p.credits .underline {
 
 .ie8 * { opacity: inherit; filter: inherit; }
 
-
-
-
 /* NOWA STRONA GŁÓWNA
 ------------------------------------------------------------- */
 
 #feature {
-	width: 100%;
-	min-height: 600px;
-	max-height: 800px;
-	position: relative;
-	overflow: hidden;
-	margin-bottom: 80px;
+  width: 100%;
+  min-height: 600px;
+  max-height: 800px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 80px;
 }
 
 #feature img {
-	width: 100%;
-	vertical-align: middle;
+  width: 100%;
+  vertical-align: middle;
 }
 
 ul.features {
-	height: 130px;
-	width: 960px;
-	position: absolute;
-	z-index: 100;
-	top: 50%; left: 50%;
-	margin-top: -90px;
-	margin-left: -480px;
+  height: 130px;
+  width: 960px;
+  position: absolute;
+  z-index: 100;
+  top: 50%; left: 50%;
+  margin-top: -90px;
+  margin-left: -480px;
 }
 
 ul.features li {
-	float: left;
-	margin: 0 5px 0 0;
-	font: normal 11px/16px Arial, sans-serif;
+  float: left;
+  margin: 0 5px 0 0;
+  font: normal 11px/16px Arial, sans-serif;
 }
 
 ul.features li:last-child {
-	margin: 0;
+  margin: 0;
 }
 
 ul.features h5 {
-	text-transform: uppercase;
-	font: normal 15px "futura-pt", sans-serif;
-	line-height: 1.5em;
-	margin-bottom: 15px;
+  text-transform: uppercase;
+  font: normal 15px "futura-pt", sans-serif;
+  line-height: 1.5em;
+  margin-bottom: 15px;
 }
 
 ul.features a {
-	display: block;
-	width: 138px;
-	height: 130px;
-	padding: 25px;
-	color: #352e27;
-	text-decoration: none;
-	background-color: rgba(218,207,186,0.9);
+  display: block;
+  width: 138px;
+  height: 130px;
+  padding: 25px;
+  color: #352e27;
+  text-decoration: none;
+  background-color: rgba(218,207,186,0.9);
 }
 
 ul.features a:hover {
-	background-color: #c99463;
-	color: #fff;
+  background-color: #c99463;
+  color: #fff;
 }
+
 
 
 /* WYSZUKIWARKA */

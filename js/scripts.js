@@ -43,27 +43,30 @@ $("document").ready(function() {
 
 	// STICKY NAVIGATION
 	
-    var sticky_navigation_offset_top = $('nav').offset().top;
-     
-    var sticky_navigation = function(){
-        var scroll_top = $(window).scrollTop();
-        if (scroll_top > sticky_navigation_offset_top) { 
-            $('nav').css({ 'position': 'fixed', 'top':0, 'left':0 });
-        } else {
-            $('nav').css({ 'position': 'relative' }); 
-        }   
-    };
-     
-    if (!jQuery.browser.mobile) {
+	if ($('nav').size() != 0) {
+		
+		var sticky_navigation_offset_top = $('nav').offset().top;
+		 
+		var sticky_navigation = function(){
+			var scroll_top = $(window).scrollTop();
+			if (scroll_top > sticky_navigation_offset_top) { 
+				$('nav').css({ 'position': 'fixed', 'top':0, 'left':0 });
+			} else {
+				$('nav').css({ 'position': 'relative' }); 
+			}   
+		};
+		 
+		if (!jQuery.browser.mobile) {
+		
+		   sticky_navigation();
+		   
+		   $(window).scroll(function() {
+				sticky_navigation();
+		   });
+		}	
     
-       sticky_navigation();
-       
-       $(window).scroll(function() {
-            sticky_navigation();
-       });
-    }
-    
-    
+	}
+	
     // FORCE SPAN AROUND EMAIL TEXT 
      
     $('.biuro .adres p:nth-child(2)').contents().filter(function(){return this.nodeType === 3}).wrap('<span />');
@@ -217,6 +220,19 @@ $("document").ready(function() {
 	    left: '100%'
 	  }, 250, "easeOutExpo");
 	});
+
+	$('body').on('mouseenter', 'footer p.copy a', function(e) {
+	  return $(this).find('.underline').css({
+	    left: '-100%'
+	  }).animate({
+	    left: '0%'
+	  }, 250, "easeOutExpo");
+	});
+	$('body').on('mouseleave', 'footer p.copy a', function(e) {
+	  return $(this).find('.underline').animate({
+	    left: '100%'
+	  }, 250, "easeOutExpo");
+	});
 	
 	
 	// OPB LOGO TRANSITIONS
@@ -350,37 +366,6 @@ $("document").ready(function() {
 	        container.find(".dropdown").slideUp(300);
 	    }
 	});
-
-
-	// TABELA WYSZIKIWANIA MIESZKAN
-
-	$(document).ready(function() {
-		$(".tabela-form input[type=checkbox]").uniform(); 
-	});
-
-	$(".tabela-form .select").click(function() {
-		$(this).find(".dropdown").slideDown(300);
-	});
-	
-	$(document).mouseup(function (e) {
-	    var container = $(".tabela-form .select");
-	
-	    if (!container.is(e.target) && container.has(e.target).length === 0) {
-	        container.find(".dropdown").slideUp(300);
-	    }
-	});
-
-
-	$( "#slider-range" ).slider({
-      range: true,
-      min: 30,
-      max: 90,
-      values: [ 30, 60 ],
-      slide: function( event, ui ) {
-        $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-      }
-    });
-
 		
 
 	// CONTACT FORM VALIDATION
@@ -408,7 +393,8 @@ $("document").ready(function() {
 	    email: "Enter a correct email."
 	  },
 	  submitHandler: function(form) {
-	    return form.submit();
+		return false;
+	    //return form.submit();
 	  },
 	  highlight: function(element) {
 	    return $(element).parent().stop().addClass("invalid").animate({
@@ -435,7 +421,7 @@ $("document").ready(function() {
 	  }
 	});
 	
-	return $("#submit").click(function() {
+	$("#submit").click(function() {
 	  
 	  if ( $("#contactform").valid() == true ) {
 	  
@@ -456,6 +442,11 @@ $("document").ready(function() {
 	          success: function(results) {
 	              $('#contactform img.loaderIcon').fadeOut(500);
 	              $('#response').slideDown(1000).html(results);
+				  $('#contactform .cols').fadeOut(500);
+				  $('#contactform .submits').fadeOut(500);
+				  $('#contactform .info').fadeOut(500);
+				  $('#contactform #response p').css('color', '#6A7F4D');
+				  
 	          }
 	      });
 	      
@@ -464,5 +455,39 @@ $("document").ready(function() {
 	  return false;
 	});
 
-						
+					
+	
+// TABELA WYSZIKIWANIA MIESZKAN
+
+	//$(document).ready(function() {
+		$(".tabela-form input[type=checkbox]").uniform(); 
+	//});
+
+	$(".tabela-form .select").click(function() {
+		$(this).find(".dropdown").slideDown(300);
+	});
+
+	$(document).mouseup(function (e) {
+		var container = $(".tabela-form .select");
+
+		if (!container.is(e.target) && container.has(e.target).length === 0) {
+			container.find(".dropdown").slideUp(300);
+		}
+	});
+
+	$( "#slider-range" ).slider({
+		range: true,
+		min: 30,
+		max: 90,
+		values: [ 30, 60 ],
+		slide: function( event, ui ) {
+			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+		}
+	});
+
+
+					
 });
+
+
+
