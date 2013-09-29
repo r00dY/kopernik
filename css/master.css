@@ -1786,7 +1786,28 @@ table.sresults thead th {
 	color: #fff;
 	text-align: left;
 	line-height: 1.2em;
-	padding: 5px 40px 0 12px;
+
+}
+
+table.sresults th a {
+	color: #fff;
+	text-decoration: none;
+	display: block;
+	padding: 8px 40px 14px 12px;
+	height: 100%;
+}
+
+table.sresults th.sort a {
+	background-position: 50% 85%;
+	background-repeat: no-repeat;
+}
+
+table.sresults th.sort.down a {
+	background-image: url(../img/tabela-sorting-down.png);
+}
+
+table.sresults th.sort.up a {
+	background-image: url(../img/tabela-sorting-up.png);
 }
 
 table.sresults td {
