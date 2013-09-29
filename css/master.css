@@ -1880,7 +1880,10 @@ div.tabela-strony {
 	text-align: center;
 	font: normal 22px "ChartWell Bars", "futura-pt", Arial sans-serif;
 	margin: 30px 0;
-	
+}
+
+div.tabela-strony a.hidden {
+	visibility: hidden;
 }
 
 div.tabela-strony a {
