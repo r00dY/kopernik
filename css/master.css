@@ -1954,6 +1954,10 @@ div.tabela-strony a.prev {
 	font-size: 13px;
 }
 
+.tabela-form .select.open {
+	background-image: url(../img/dropdown-maly-open.png);
+}
+
 .tabela-form .select .dropdown {
 	display: none;
 	position: absolute;

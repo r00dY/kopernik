@@ -464,14 +464,19 @@ $("document").ready(function() {
 	//});
 
 	$(".tabela-form .select").click(function() {
-		$(this).find(".dropdown").slideDown(300);
+		var dropdown = $(this).find(".dropdown");
+		if (dropdown.is(":hidden")) {
+			dropdown.slideDown(300);
+			$(this).addClass("open");
+		}
 	});
 
 	$(document).mouseup(function (e) {
 		var container = $(".tabela-form .select");
 
-		if (!container.is(e.target) && container.has(e.target).length === 0) {
+		if (container.is(e.target) || container.has(e.target).length === 0) {
 			container.find(".dropdown").slideUp(300);
+			container.removeClass("open");
 		}
 	});
 
