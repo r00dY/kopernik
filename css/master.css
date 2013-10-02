@@ -2052,3 +2052,25 @@ div.tabela-strony a.prev {
 	width: 220px;
 	margin-bottom: 70px;
 }
+
+table.sresults thead tr.nie-znaleziono th {
+	height: 30px;
+	text-align: center;
+	background: #639C40;
+	color: white;
+	border-bottom: none;
+	font-weight: normal;
+	vertical-align: middle;
+	padding-bottom: 5px;
+}
+
+table.sresults thead tr.nie-znaleziono-error th {
+	height: 30px;
+	text-align: center;
+	background: #DB4242;
+	color: white;
+	border-bottom: none;
+	font-weight: normal;
+	vertical-align: middle;
+	padding-bottom: 5px;
+}
