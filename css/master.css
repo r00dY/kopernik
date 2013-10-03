@@ -2050,7 +2050,55 @@ div.tabela-strony a.prev {
 
 #slider-range {
 	width: 220px;
-	margin-bottom: 70px;
+	margin: 27px 0 5px;
+	height: 5px;
+	border: 1px solid #5a5a5a;
+	position: relative;
+}
+
+#slider-range span:first-child {
+	display: block;
+	position: absolute;
+	bottom: -10px;
+}
+
+.ui-slider-horizontal .ui-state-default {
+	display: block;
+	position: absolute;
+	top: -20px;
+	width: 18px !important;
+	height: 18px !important;
+	background: url(../img/range-mark.png) 0 0 no-repeat;
+	z-index: 500;
+	padding-left: 6px;
+}
+
+#slider-range .ui-slider-range {
+	background-color: #e5946a;
+	height: 5px;
+	position: absolute;
+}
+
+#slider-numbers {
+	width: 220px;
+	position: relative;
+	margin-bottom: 43px;
+}
+
+#slider-numbers span {
+	display: inline-block;
+	margin-left: 42px;
+}
+
+#slider-numbers span:first-child {
+	position: absolute;
+	left: -8px;
+	margin-left: 0;
+}
+
+#slider-numbers span:last-child {
+	position: absolute;
+	right: -9px;
 }
 
 table.sresults thead tr.nie-znaleziono th {
