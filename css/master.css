@@ -2037,6 +2037,7 @@ div.tabela-strony a.prev {
 	border: 1px solid #626262;
 	color: #fff;
 	cursor: pointer;
+	margin-top: 38px;
 }
 
 .tabela-form button.form-clear {

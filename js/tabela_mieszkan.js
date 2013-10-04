@@ -17,7 +17,7 @@ $(document).ready(function() {
 	var LOCALS_SHOWN = "NORMAL";
 	var SORTED_COLUMN;
 	var SORTED_DIRECTION;
-	
+
 	function local_compare(x, y) {
 		if (typeof SORTED_COLUMN != 'undefined') {
 			if (typeof x[SORTED_COLUMN] == "string") {
@@ -77,6 +77,23 @@ $(document).ready(function() {
 	
 	LOCALS = LOCALS_NORMAL;
 	DISPLAYED = LOCALS;
+	
+	// Inicjalizacja
+	var filter_option = $('#filter_option').text();
+	switch(filter_option) {
+		case 'panorama':
+			$('.tabela-form input#widok-na-panorame').prop('checked', true);
+			break;
+		case 'projekt':
+			$('.tabela-form input#mieszkanie-z-projektem-wnetrza').prop('checked', true);
+			break;
+		case 'taras':
+			$('.tabela-form input#przestronny-taras').prop('checked', true);
+			break;
+	}
+	$.uniform.update('.tabela-form input:checkbox');
+	
+	filter_displayed();
 	locals_display(false);
 	
 	// LOCALS DISPLAY
@@ -260,23 +277,41 @@ $(document).ready(function() {
 		// Kryterium główne
 		kryteria.push(kryterium_glowne);
 	
-		// Kryterium 1
+		// Kryterium 1 -> dowolne piętro
 		kryterium_tmp = $.extend({}, kryterium_tmp);
 		kryterium_tmp['pietra'] = [];
 		kryteria.push(kryterium_tmp);
 	
-		// Kryterium 2
+		// Kryterium 2 -> dowolny budynek
 		kryterium_tmp = $.extend({}, kryterium_tmp);
 		kryterium_tmp['budynki'] = [];
 		kryteria.push(kryterium_tmp);
+				
+		// Kryterium 3 -> metraż +10 -10
+		kryterium_tmp = $.extend({}, kryterium_tmp);
+		kryterium_tmp['powierzchnia_od'] = kryterium_glowne['powierzchnia_od'] - 10;
+		kryterium_tmp['powierzchnia_do'] = kryterium_glowne['powierzchnia_do'] + 10;
+		kryteria.push(kryterium_tmp);
 		
-		// Tutaj trzeba dodać kryteria
-		
-		
-		
+		// Kryteria -> mniejszy zakres cech
+		for(var i = 0; i < kryterium_glowne['cechy'].length; i++) {
+			var nowe_cechy = [];
+			for(var j = 0; j < kryterium_glowne['cechy'].length; j++) {
+				if (i != j) {
+					nowe_cechy.push(kryterium_glowne['cechy'][j]);
+				}
+			}
+			kryterium_tmp = $.extend({}, kryterium_tmp);
+			kryterium_tmp['cechy'] = nowe_cechy;
+			kryteria.push(kryterium_tmp);
+		}
+
+		kryterium_tmp = $.extend({}, kryterium_tmp);
+		kryterium_tmp['cechy'] = [];
+		kryteria.push(kryterium_tmp);
 		
 		// Ocenianie poziomu zgodności dla każdego mieszkania
-		var TMP = LOCALS.map(function(x) { x['level'] = 0; return x; });
+		var TMP = $.map(LOCALS, function(x) { x['level'] = 0; return x; });
 		
 		for(var j = 0; j < TMP.length; j++) {
 			var mieszkanie = TMP[j];
@@ -296,7 +331,13 @@ $(document).ready(function() {
 		var level = 1;
 		var TMP2;
 		do {
-			TMP2 = TMP.filter(function(x) { return x['level'] == level; });
+			TMP2 = [];
+			for(var i = 0; i < TMP.length; i++) {
+				if (TMP[i]['level'] == level) {
+					TMP2.push(TMP[i]);
+				}
+			}
+			//TMP2 = TMP.filter(function(x) { return x['level'] == level; });
 			if (TMP2.length > 0) {
 				TMP = TMP2;
 				break;
@@ -317,7 +358,13 @@ $(document).ready(function() {
 		}
 
 		// Przy okazji filtracji pojawiają się wyniki filtracji w polach
-		var budynek_msg = budynki.length > 0 ? budynki.join(', ') : "dowolny";
+		var budynek_msg;
+		if (budynki.length == 0) { budynek_msg = "dowolny"; }
+		else if (budynki.length == 1) { budynek_msg = budynki.join(', '); }
+		else {
+			budynek_msg = "wybrano " + budynki.length;
+		}
+		
 		var pokoje_msg = pokoje.length > 0 ? pokoje.join(', ') : "dowolna";
 		var pietro_msg = pietra.length > 0 ? pietra.join(', ') : "dowolne";
 		
@@ -397,6 +444,7 @@ $(document).ready(function() {
 		
 		LOCALS = LOCALS_NORMAL;
 		DISPLAYED = LOCALS;
+		filter_displayed();
 		locals_display(false);
 		$('.sresults').fadeOut(FADE_DURATION, function() {
 			$('.sresults').fadeIn();
@@ -422,6 +470,21 @@ $(document).ready(function() {
 		
 		locals_display(false);
 		return false;
+	});
+	
+	// slider
+	$( "#slider-range" ).slider({
+		range: true,
+		min: 30,
+		max: 100,
+		values: [ 30, 100 ],
+		stop: function( event, ui ) {
+			$('.slider-value#od').text(ui.values[0].toString());
+			$('.slider-value#do').text(ui.values[1].toString());
+			filter_displayed();
+			locals_display(false);
+			
+		}
 	});
 	
 });
