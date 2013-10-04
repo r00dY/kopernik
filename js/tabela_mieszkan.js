@@ -15,6 +15,41 @@ $(document).ready(function() {
 	var FADE_DURATION = 200;
 	var SHOW_ALERT = 0; // 0 - brak, 1 - podobne, 2 - nic
 	var LOCALS_SHOWN = "NORMAL";
+	var SORTED_COLUMN;
+	var SORTED_DIRECTION;
+	
+	function local_compare(x, y) {
+		if (typeof SORTED_COLUMN != 'undefined') {
+			if (typeof x[SORTED_COLUMN] == "string") {
+				var c = x[SORTED_COLUMN].localeCompare(y[SORTED_COLUMN]);
+				if (c != 0) {
+					if (SORTED_DIRECTION == "down")
+						return c;
+					else
+						return -c;
+				}
+			} else {
+				var c = x[SORTED_COLUMN] - y[SORTED_COLUMN];
+				if (c != 0) {
+					if (SORTED_DIRECTION == "down")
+						return c;
+					else
+						return -c;
+				}
+			}
+		}
+	
+		var c = x['budynek'].localeCompare(y['budynek']);
+		if (c != 0) return c;
+		
+		c = x['pietro'] - y['pietro'];
+		if (c != 0) return c;
+		
+		c = x['numer'] - y['numer'];
+		if (c != 0) return c;
+		
+		return 0;
+	}
 	
 	// Create data structure of locals
 	$('div#mieszkania-wszystkie > div').each(function() {
@@ -56,6 +91,8 @@ $(document).ready(function() {
 	
 		$('table.sresults tbody').fadeOut(FADE_DURATION, function() {
 		
+			DISPLAYED.sort(local_compare);
+		
 			if (!is_page_change) {
 				PAGE = 1;
 				$('.tabela-strony').empty();
@@ -72,9 +109,15 @@ $(document).ready(function() {
 						PAGE = parseInt($(this).text());
 						
 						if (PAGE == PAGES) {
-							$('.tabela-strony .next').hide();
+							$('.tabela-strony .next').addClass("hidden");
 						} else {
-							$('.tabela-strony .next').show();
+							$('.tabela-strony .next').removeClass("hidden");
+						}
+						
+						if (PAGE == 1) {
+							$('.tabela-strony .prev').addClass("hidden");
+						} else {
+							$('.tabela-strony .prev').removeClass("hidden");
 						}
 						
 						locals_display(true);
@@ -91,7 +134,16 @@ $(document).ready(function() {
 						return false;
 					});
 					$('.tabela-strony').append(next);
+				
+					var prev = $('<a href="#" class="prev hidden">&lt; Poprzednia</a>');
+					prev.click(function() {
+						$('.tabela-strony a.current').prev().trigger('click');
+						return false;
+					});
+					$('.tabela-strony').prepend(prev);
+				
 				}
+				
 			}
 			
 			$('table.sresults tbody').empty();
@@ -164,6 +216,8 @@ $(document).ready(function() {
 		var budynki = [];
 		var pietra = [];
 		var cechy = [];
+		var powierzchnia_od;
+		var powierzchnia_do;
 		var tylko_dostepne = false;
 		
 		// Ilośc pokoi
@@ -182,6 +236,10 @@ $(document).ready(function() {
 		$('.tabela-form .cechy input[type=checkbox]:checked').each(function() {
 			cechy.push($(this).attr('id'));
 		});
+		// Metraż
+		powierzchnia_od = parseInt($('.slider-value#od').text());
+		powierzchnia_do = parseInt($('.slider-value#do').text());
+		
 		// Czy pokazywać tylko dostępne mieszkania?
 		$('input#dostepne:checked').each(function() { tylko_dostepne = true; });
 
@@ -193,7 +251,9 @@ $(document).ready(function() {
 			'budynki' : budynki,
 			'pietra' : pietra,
 			'cechy' : cechy,
-			'tylko_dostepne' : tylko_dostepne
+			'tylko_dostepne' : tylko_dostepne,
+			'powierzchnia_od' : powierzchnia_od,
+			'powierzchnia_do' : powierzchnia_do
 		};
 		var kryterium_tmp = kryterium_glowne;
 		
@@ -211,6 +271,9 @@ $(document).ready(function() {
 		kryteria.push(kryterium_tmp);
 		
 		// Tutaj trzeba dodać kryteria
+		
+		
+		
 		
 		// Ocenianie poziomu zgodności dla każdego mieszkania
 		var TMP = LOCALS.map(function(x) { x['level'] = 0; return x; });
@@ -278,6 +341,9 @@ $(document).ready(function() {
 		if (kryterium['pokoje'].length > 0) {
 			if ($.inArray(mieszkanie['pokoje'], kryterium['pokoje']) == -1) return false;
 		}
+		if (! (kryterium['powierzchnia_od'] <= mieszkanie['powierzchnia'] && mieszkanie['powierzchnia'] <= kryterium['powierzchnia_do']) )  {
+			return false;
+		}
 		
 		if (kryterium['cechy'].length > 0) {
 			for (var i = 0; i < kryterium['cechy'].length; i++) {
@@ -337,6 +403,24 @@ $(document).ready(function() {
 			$('.tabela-form').fadeIn();
 		});
 		
+		return false;
+	});
+	
+	// sortowanie
+	$('.sresults th.sort').click(function() {
+		var hasclass = $(this).hasClass("down");
+		$('.sresults th.sort').removeClass('up').removeClass('down');
+		
+		SORTED_COLUMN = $(this).attr('id');
+		if (hasclass) {
+			SORTED_DIRECTION = "up";
+			$(this).addClass("up");
+		} else {
+			SORTED_DIRECTION = "down";
+			$(this).addClass("down");
+		}
+		
+		locals_display(false);
 		return false;
 	});
 	

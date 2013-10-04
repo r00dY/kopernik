@@ -459,9 +459,7 @@ $("document").ready(function() {
 	
 // TABELA WYSZIKIWANIA MIESZKAN
 
-	//$(document).ready(function() {
-		$(".tabela-form input[type=checkbox]").uniform(); 
-	//});
+	$(".tabela-form input[type=checkbox]").uniform();
 
 	$(".tabela-form .select").click(function() {
 		var dropdown = $(this).find(".dropdown");
@@ -483,10 +481,12 @@ $("document").ready(function() {
 	$( "#slider-range" ).slider({
 		range: true,
 		min: 30,
-		max: 90,
+		max: 100,
 		values: [ 30, 60 ],
 		slide: function( event, ui ) {
-			$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+			$('.slider-value#od').text(ui.values[0].toString());
+			$('.slider-value#do').text(ui.values[1].toString());
+			//$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
 		}
 	});
 
